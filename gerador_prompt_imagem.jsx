@@ -223,7 +223,7 @@ const proporcoes = [
   "20:9 (Samsung Galaxy)"
 ];
 
-export default function PromptGenerator() {
+window.GeradorPromptImagem = GeradorPromptImagem;() {
   const [prompt, setPrompt] = useState("");
   const [copiado, setCopiado] = useState(false);
   const [settings, setSettings] = useState(presets["Foto profissional (LinkedIn)"]);
