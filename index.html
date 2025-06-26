@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PromptStudio - v0.2.0 (Beta)</title>
   
-  <!-- INCLUSÃO DA FONTE POPPINS DO GOOGLE FONTS -->
+  <!-- ÍCONE DA PÁGINA (FAVICON) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%238b5cf6' d='M62.6,3.6c-2.4-2.4-6.3-2.4-8.7,0L10.2,47.3c-2.4,2.4-2.4,6.3,0,8.7c2.4,2.4,6.3,2.4,8.7,0l43.7-43.7C65,9.9,65,6,62.6,3.6z'/%3E%3Cpath fill='%238b5cf6' d='M96.4,37.4c-2.4-2.4-6.3-2.4-8.7,0L44,81.1c-2.4,2.4-2.4,6.3,0,8.7c2.4,2.4,6.3,2.4,8.7,0L96.4,46.1C98.8,43.7,98.8,39.8,96.4,37.4z'/%3E%3Cpath fill='%23a78bfa' d='M82.8,11.5c-1.8,1.8-4.7,1.8-6.5,0L65.5,0.7c-1.8-1.8-1.8-4.7,0-6.5c1.8-1.8,4.7-1.8,6.5,0l10.8,10.8C84.6,6.8,84.6,9.7,82.8,11.5z' transform='translate(10 -5) rotate(15)'/%3E%3Cpath fill='%23a78bfa' d='M25,85.5c-1.8,1.8-4.7,1.8-6.5,0L7.7,74.7c-1.8-1.8-1.8-4.7,0-6.5c1.8-1.8,4.7-1.8,6.5,0l10.8,10.8C26.8,80.8,26.8,83.7,25,85.5z' transform='translate(-5 5) rotate(15)'/%3E%3C/svg%3E">
+
+  <!-- FONTE POPPINS DO GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -32,7 +35,7 @@
       border-color: #a78bfa; /* violet-400 */
     }
     select:invalid { color: #6b7280; }
-    summary { list-style: none; }
+    summary { list-style: none; cursor: pointer; }
     summary::-webkit-details-marker { display: none; }
     details[open] summary ~ * { animation: sweep .5s ease-in-out; }
     @keyframes sweep {
@@ -45,7 +48,7 @@
 
   <div id="root" class="max-w-3xl mx-auto px-4 py-8">
     
-    <!-- TÍTULO E SUBTÍTULO ATUALIZADOS -->
+    <!-- TÍTULO E SUBTÍTULO -->
     <div class="text-center mb-8">
         <h1 class="font-poppins text-5xl font-bold text-gray-800 tracking-tighter">PromptStudio</h1>
         <p class="text-xl text-gray-500 mt-2">Seu assistente criativo para prompts de imagem.</p>
@@ -222,7 +225,7 @@
     <div id="accordion-container" class="mt-8 space-y-4">
       
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 rounded-lg">
           🎉 Novidades
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
@@ -230,19 +233,19 @@
                 <p>Data: 26 de Junho de 2025</p>
                 <p>Versão: v0.2.0 (Beta)</p>
             </div>
+            <p class="font-semibold text-lg">Resumo das alterações:</p>
             <ul class="list-disc list-inside space-y-2">
-                <li><strong>Prompt em Inglês:</strong> Agora todos os prompts são gerados em inglês para máxima compatibilidade e qualidade com as IAs.</li>
-                <li><strong>Qualidade Aprimorada:</strong> Termos de alta fidelidade (4k, photorealistic, sharp focus, etc.) são adicionados automaticamente ao final de cada prompt.</li>
-                <li><strong>Novo Layout:</strong> Os campos foram reorganizados com subtítulos para facilitar a compreensão de cada opção.</li>
-                <li><strong>Seção de Novidades:</strong> Você está lendo ela agora! Um espaço para acompanhar as atualizações.</li>
-                <li><strong>Links de Apoio:</strong> Adicionados links para apoiar o projeto e enviar sugestões diretamente.</li>
-                <li><strong>Rodapé com Versão:</strong> O número da versão agora é exibido no rodapé da página.</li>
+                <li><strong>Nova Identidade Visual:</strong> Adicionamos uma nova fonte (Poppins) e um ícone (favicon) para dar uma cara mais profissional à ferramenta.</li>
+                <li><strong>Data Dinâmica Inteligente:</strong> A opção "Data" agora insere a data atual no formato brasileiro (DD/MM/AAAA), evitando datas aleatórias da IA.</li>
+                <li><strong>Melhorias de Usabilidade:</strong> O layout foi refinado com subtítulos e a limpeza de elementos visuais para uma experiência mais fluida.</li>
+                <li><strong>Otimização de Prompt:</strong> Prompts agora são gerados em inglês e com um sufixo de alta qualidade para garantir os melhores resultados.</li>
+                <li><strong>Novas Seções Informativas:</strong> Adicionamos seções de "Novidades" e "IAs para Gerar Imagens".</li>
             </ul>
         </div>
       </details>
-
+      
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 rounded-lg">
           🛠️ Como usar o gerador?
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
@@ -256,9 +259,24 @@
           <p class="pt-2 italic text-sm text-gray-500"><strong>Dica extra:</strong> você pode repetir o processo mudando só alguns elementos para testar novos estilos 😉</p>
         </div>
       </details>
-      
+
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 rounded-lg">
+          📷 Qual a melhor foto para usar?
+        </summary>
+        <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
+          <p><strong>1. Prefira fundo limpo ou desfocado:</strong> 🧱 Parede lisa, céu ou natureza simples funcionam melhor.</p>
+          <p><strong>2. Boa iluminação é essencial:</strong> 💡 Use luz natural ou um ambiente bem claro. Evite fotos escuras.</p>
+          <p><strong>3. Centralize o rosto ou corpo:</strong> 📍 A pessoa deve estar bem no centro, sem cortes.</p>
+          <p><strong>4. Use expressão leve ou natural:</strong> 😐 Rosto neutro ou um leve sorriso funciona melhor que caretas.</p>
+          <p><strong>5. Evite selfies muito próximas:</strong> 🤳 Selfies coladas no rosto distorcem as proporções.</p>
+          <p><strong>6. Use fotos nítidas e sem filtros:</strong> 🖼️ Quanto mais "crua" a foto, melhor o resultado final.</p>
+          <p><strong>7. Cores naturais são as ideais:</strong> 🎨 Prefira fotos com tons reais de pele e luz.</p>
+        </div>
+      </details>
+
+      <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 rounded-lg">
           🚀 IAs para Gerar Imagens
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-8">
@@ -322,7 +340,7 @@
       </details>
       
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 rounded-lg">
           🚫 Dicas para evitar bloqueios
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
@@ -350,7 +368,7 @@
         </a>
     </div>
 
-    <p class="text-xs text-center text-gray-500 mt-6">
+    <p class="text-xs text-center text-gray-500 mt-8">
       Criado por <span class="font-semibold text-gray-600">@moisesdovalesouza</span> · v0.2.0 (Beta)
     </p>
   </div>
@@ -383,7 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const proporcoes = [ "1:1 (quadrado)", "1:1 com espaço inferior ampliado", "2:3 (vertical)", "2:3 (horizontal)", "3:4 (vertical)", "3:4 (horizontal)", "4:5 (vertical)", "4:5 (horizontal)", "16:9 (vertical)", "16:9 (horizontal)", "9:16 (vertical)", "9:16 (horizontal)", "2.39:1 (vertical)", "2.39:1 (horizontal)", "19.5:9 (iPhone)", "20:9 (Samsung Galaxy)", "8.5:11 (vertical)" ];
 
-  // *** DICIONÁRIO DE TRADUÇÃO ***
   const traducoes = {
     // Planos
     "primeiro plano": "close-up shot", "plano médio": "medium shot", "plano americano": "american shot",
@@ -397,18 +414,15 @@ document.addEventListener('DOMContentLoaded', () => {
     "(quadrado)": "(square)", "(vertical)": "(vertical)", "(horizontal)": "(horizontal)", "(iPhone)": "(iPhone)", "(Samsung Galaxy)": "(Samsung Galaxy)", "com espaço inferior ampliado": "with expanded bottom space",
     // Bordas
     "sem bordas": "no borders", "borda branca suave": "soft white border", "borda escura": "dark border", "borda branca espessa inferior (estilo polaroid)": "thick white bottom border (polaroid style)",
-    // Efeitos
-    "data": "timestamp printed on the image", "vazamento": "nostalgic light leak", "pelos": "film grain and small dust particles", "granulado": "visible analog grain", "poeira": "scattered sun dust", "vinheta": "dark vignette on the edges", "gotas": "water drops running down the face", "neve": "scattered snowflakes", "sol": "sun rays coming from the side", "vapor": "soft vapor enveloping the image", "brilho": "soft bokeh lights in the background", "respingos": "water splashes or suspended particles"
+    // Efeitos (sem data, que será tratada separadamente)
+    "vazamento": "nostalgic light leak", "pelos": "film grain and small dust particles", "granulado": "visible analog grain", "poeira": "scattered sun dust", "vinheta": "dark vignette on the edges", "gotas": "water drops running down the face", "neve": "scattered snowflakes", "sol": "sun rays coming from the side", "vapor": "soft vapor enveloping the image", "brilho": "soft bokeh lights in the background", "respingos": "water splashes or suspended particles"
   };
 
-  // *** SUFIXO DE QUALIDADE DO PROMPT ***
   const PROMPT_SUFFIX = ", 4k, hd, high-resolution photo, photorealistic, sharp focus, extremely detailed face and skin, no distortion, original facial structure preserved, preserve exact facial features: teeth size, nose shape, face proportions, jawline, bone structure, distance between eyes, lip thickness, eyebrow shape, eye size and color, ear position, skin tone, face width and height ratio, same facial expressions and symmetry, people clearly visible, no blending or fusion";
-
-  // --- State Variables ---
+  
   let settings = {};
   let efeitos = { data: false, vazamento: false, pelos: false, granulado: false, poeira: false, vinheta: false, gotas: false, neve: false, sol: false, vapor: false, brilho: false, respingos: false };
 
-  // --- DOM Elements ---
   const presetSelect = document.getElementById('preset-select');
   const settingsSelects = document.querySelectorAll('#settings-container select');
   const effectsContainer = document.getElementById('effects-container');
@@ -418,16 +432,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyFeedback = document.getElementById('copy-feedback');
   const proporcaoSelect = document.getElementById('select-proporcao');
 
-  // --- Functions ---
   const translate = (term) => traducoes[term] || term;
   
   function updateUI(newSettings) {
     settings = { ...newSettings };
     settingsSelects.forEach(select => {
       const key = select.dataset.key;
-      if (settings[key]) {
-        select.value = settings[key];
-      }
+      if (settings[key]) select.value = settings[key];
     });
     Object.keys(efeitos).forEach(key => {
         efeitos[key] = false;
@@ -436,18 +447,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function aplicarPreset(presetName) {
-    if (presets[presetName]) {
-      updateUI(presets[presetName]);
-    }
+    if (presets[presetName]) updateUI(presets[presetName]);
   }
 
   function gerarPrompt() {
     let currentSettings = {};
-    settingsSelects.forEach(select => {
-      currentSettings[select.dataset.key] = select.value;
-    });
+    settingsSelects.forEach(select => currentSettings[select.dataset.key] = select.value);
     
-    // Validação
     const requiredFields = ['plano', 'lente', 'abertura', 'iluminacao', 'atmosfera', 'expressao', 'proporcao', 'borda'];
     for (const field of requiredFields) {
         if (!currentSettings[field]) {
@@ -460,11 +466,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let extras = [];
     Object.entries(efeitos).forEach(([key, value]) => {
       if (value) {
-        extras.push(translate(key));
+        if (key === 'data') {
+          const today = new Date();
+          const day = String(today.getDate()).padStart(2, '0');
+          const month = String(today.getMonth() + 1).padStart(2, '0');
+          const year = today.getFullYear();
+          const fullDate = `${day}/${month}/${year}`;
+          const dateString = `timestamp printed on the image, displaying the date ${fullDate}`;
+          extras.push(dateString);
+        } else {
+          extras.push(translate(key));
+        }
       }
     });
 
-    // Tradução da proporção
     let translatedProporcao = currentSettings.proporcao;
     Object.entries(traducoes).forEach(([pt, en]) => {
       if (translatedProporcao.includes(pt)) {
@@ -474,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const promptBase = `A photograph, ${translate(currentSettings.plano)} with a ${currentSettings.lente} lens, aspect ratio ${translatedProporcao}, shallow depth of field (${currentSettings.abertura}), ${translate(currentSettings.iluminacao)}, poetic atmosphere with ${translate(currentSettings.atmosfera)}, ${translate(currentSettings.expressao)}, with ${translate(currentSettings.borda)}`;
     const extrasText = extras.length > 0 ? `, including elements like ${extras.join(", ")}` : "";
-
+    
     promptOutput.value = promptBase + extrasText + PROMPT_SUFFIX;
     copyFeedback.classList.add('hidden');
   }
@@ -534,8 +549,8 @@ document.addEventListener('DOMContentLoaded', () => {
         div.appendChild(checkbox);
         div.appendChild(label);
         effectsContainer.appendChild(div);
-        checkbox.addEventListener('change', (e) => {
-            efeitos[key] = e.target.checked;
+        checkbox.addEventListener('change', () => {
+            efeitos[key] = checkbox.checked;
         });
     });
 
