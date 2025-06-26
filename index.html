@@ -21,6 +21,17 @@
       box-shadow: 0 0 0 2px var(--tw-ring-color);
       border-color: #a78bfa; /* violet-400 */
     }
+    /* Estilo para o placeholder do select */
+    select:invalid {
+      color: #6b7280; /* text-gray-500 */
+    }
+    /* Remove o marcador padrão do <summary> em todos os navegadores */
+    summary {
+      list-style: none; /* Firefox */
+    }
+    summary::-webkit-details-marker {
+      display: none; /* Chrome, Safari */
+    }
   </style>
 </head>
 <body>
@@ -30,8 +41,9 @@
     <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
       <div class="space-y-6">
         <div>
-          <label for="preset-select" class="text-gray-700 text-sm font-medium block mb-2">Estilo predefinido</label>
+          <label for="preset-select" class="text-gray-700 text-sm font-medium block mb-2">Estilo predefinido (Opcional)</label>
           <select id="preset-select" class="w-full p-2 rounded-xl border-gray-300 border bg-white">
+            <option value="" disabled selected>Escolha um modelo para começar</option>
             <!-- As opções de preset serão preenchidas por JavaScript -->
           </select>
         </div>
@@ -40,7 +52,8 @@
         <div id="settings-container" class="space-y-4">
           <div>
             <label for="select-plano" class="block mb-1">Plano (enquadramento da imagem)</label>
-            <select id="select-plano" data-key="plano" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-plano" data-key="plano" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+              <option value="" disabled selected>Selecione o enquadramento</option>
               <option value="primeiro plano">primeiro plano</option>
               <option value="plano médio">plano médio</option>
               <option value="plano americano">plano americano</option>
@@ -48,7 +61,8 @@
           </div>
           <div>
             <label for="select-lente" class="block mb-1">Lente (distância focal usada)</label>
-            <select id="select-lente" data-key="lente" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-lente" data-key="lente" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+              <option value="" disabled selected>Selecione a lente</option>
               <option value="35mm">35mm</option>
               <option value="85mm">85mm</option>
               <option value="50mm">50mm</option>
@@ -57,18 +71,20 @@
           </div>
           <div>
             <label for="select-abertura" class="block mb-1">Abertura do diafragma (profundidade de campo)</label>
-            <select id="select-abertura" data-key="abertura" class="w-full p-2 rounded-md border-gray-300 border bg-white">
-              <option value="f/1.8">f/1.8</option>
-              <option value="f/2.8">f/2.8</option>
-              <option value="f/8">f/8</option>
+            <select id="select-abertura" data-key="abertura" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+              <option value="" disabled selected>Selecione a abertura</option>
               <option value="f/1.4">f/1.4</option>
-              <option value="f/4">f/4</option>
+              <option value="f/1.8">f/1.8</option>
               <option value="f/2.0">f/2.0</option>
+              <option value="f/2.8">f/2.8</option>
+              <option value="f/4">f/4</option>
+              <option value="f/8">f/8</option>
             </select>
           </div>
           <div>
             <label for="select-iluminacao" class="block mb-1">Iluminação (tipo de luz utilizada)</label>
-            <select id="select-iluminacao" data-key="iluminacao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-iluminacao" data-key="iluminacao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+                <option value="" disabled selected>Selecione a iluminação</option>
                 <option value="iluminação suave frontal">iluminação suave frontal</option>
                 <option value="luz natural com sombras suaves">luz natural com sombras suaves</option>
                 <option value="flash direto com sombra marcada">flash direto com sombra marcada</option>
@@ -88,7 +104,8 @@
           </div>
           <div>
             <label for="select-atmosfera" class="block mb-1">Atmosfera/estilo visual (cores, textura, tom)</label>
-            <select id="select-atmosfera" data-key="atmosfera" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-atmosfera" data-key="atmosfera" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+                <option value="" disabled selected>Selecione a atmosfera</option>
                 <option value="tons neutros e limpos, fundo claro desfocado">tons neutros e limpos, fundo claro desfocado</option>
                 <option value="tons levemente saturados com nitidez alta">tons levemente saturados com nitidez alta</option>
                 <option value="cores lavadas e granulação estilo VHS">cores lavadas e granulação estilo VHS</option>
@@ -109,7 +126,8 @@
           </div>
           <div>
             <label for="select-expressao" class="block mb-1">Expressão (emoção transmitida pela imagem)</label>
-            <select id="select-expressao" data-key="expressao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-expressao" data-key="expressao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+                <option value="" disabled selected>Selecione a expressão</option>
                 <option value="expressão simpática e confiante">expressão simpática e confiante</option>
                 <option value="expressão espontânea e introspectiva">expressão espontânea e introspectiva</option>
                 <option value="expressão descontraída e nostálgica">expressão descontraída e nostálgica</option>
@@ -135,13 +153,15 @@
           </div>
           <div>
             <label for="select-proporcao" class="block mb-1">Proporção da foto (relação largura-altura)</label>
-            <select id="select-proporcao" data-key="proporcao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-proporcao" data-key="proporcao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+              <option value="" disabled selected>Selecione a proporção</option>
               <!-- Opções preenchidas por JS -->
             </select>
           </div>
           <div>
             <label for="select-borda" class="block mb-1">Tipo de borda (acabamento da imagem)</label>
-            <select id="select-borda" data-key="borda" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+            <select id="select-borda" data-key="borda" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
+                <option value="" disabled selected>Selecione o tipo de borda</option>
                 <option value="sem bordas">sem bordas</option>
                 <option value="borda branca suave">borda branca suave</option>
                 <option value="borda escura">borda escura</option>
@@ -157,7 +177,7 @@
           </div>
         </div>
 
-        <textarea id="prompt-output" rows="4" class="w-full p-2 rounded-xl border-gray-300 border"></textarea>
+        <textarea id="prompt-output" rows="4" class="w-full p-2 rounded-xl border-gray-300 border" placeholder="Seu prompt será gerado aqui..."></textarea>
 
         <div class="flex flex-col items-center space-y-4">
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -176,6 +196,60 @@
         </div>
       </div>
     </div>
+    
+    <!-- INÍCIO DA SEÇÃO DE ORIENTAÇÕES -->
+    <div id="accordion-container" class="mt-8 space-y-4">
+      
+      <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
+        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🛠️ Como usar o gerador de prompt?
+        </summary>
+        <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
+          <p>🔸 <strong>1. Escolha os elementos visuais</strong><br>🎨 Marque os detalhes que quer na imagem: tipo de rosto, estilo, clima, lente, iluminação, etc.</p>
+          <p>🔸 <strong>2. Clique em “Gerar Prompt”</strong><br>⚡ O app vai criar um texto descritivo baseado nas opções que você marcou.</p>
+          <p>🔸 <strong>3. Copie o prompt</strong><br>📋 Clique em “Copiar” pra salvar o texto automaticamente.</p>
+          <p>🔸 <strong>4. Vá até a sua IA favorita (como Midjourney ou Leonardo AI)</strong><br>🧠 Escolha o campo de geração de imagem via prompt.</p>
+          <p>🔸 <strong>5. Faça o upload da foto que quer estilizar</strong><br>📸 Use uma imagem clara, bem iluminada e com rosto visível (veja nossas dicas!).</p>
+          <p>🔸 <strong>6. Cole o prompt no campo de texto</strong><br>📝 Depois de subir a imagem, cole o prompt no mesmo espaço.</p>
+          <p>🔸 <strong>7. Pronto!</strong><br>🚀 Agora é só gerar a imagem estilizada com base na sua foto + descrição!</p>
+          <p class="pt-2 italic text-sm text-gray-500"><strong>Dica extra:</strong> você pode repetir o processo mudando só alguns elementos do prompt pra testar novos estilos 😉</p>
+        </div>
+      </details>
+
+      <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
+        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          📷 Como escolher a melhor foto pra usar no gerador?
+        </summary>
+        <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
+          <p>🔹 <strong>1. Prefira fundo limpo ou desfocado</strong><br>🧱 Parede lisa, céu, cortina ou natureza simples funcionam melhor. Evite bagunça no fundo!</p>
+          <p>🔹 <strong>2. Boa iluminação ajuda muito!</strong><br>💡 Use luz natural ou ambiente bem claro. Evite foto escura ou contra o sol.</p>
+          <p>🔹 <strong>3. Centralize o rosto ou o corpo</strong><br>📍 A pessoa deve estar bem no centro da imagem. Nada de foto cortada ou torta!</p>
+          <p>🔹 <strong>4. Use expressão leve ou natural</strong><br>😐 Rosto neutro, tranquilo ou sonhador funciona melhor que careta ou exagero.</p>
+          <p>🔹 <strong>5. Evite selfies muito próximas</strong><br>🤳 Foto com o celular colado no rosto distorce. Dê um passinho pra trás!</p>
+          <p>🔹 <strong>6. Use fotos nítidas e sem filtro</strong><br>🖼️ Nada de foto borrada ou cheia de filtro. Quanto mais limpa, melhor o resultado.</p>
+          <p>🔹 <strong>7. Cores naturais são melhores</strong><br>🎨 Prefira fotos com tons reais de pele e luz. Esquece os filtros roxos por agora!</p>
+        </div>
+      </details>
+
+      <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
+        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🚫 Dicas pra evitar bloqueios nas IAs geradoras
+        </summary>
+        <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
+          <p>🔸 <strong>1. Nada de nudez ou pouca roupa</strong><br>🙅‍♀️ Evite fotos sem camisa, com lingerie, trajes íntimos ou poses sensuais demais. A IA pode bloquear ou banir.</p>
+          <p>🔸 <strong>2. Não use fotos de crianças ou adolescentes</strong><br>🧒 Por segurança e ética, evite qualquer imagem de menores de idade, mesmo com roupa. Pode gerar restrição automática.</p>
+          <p>🔸 <strong>3. Cuidado com conteúdo sensível</strong><br>🚬💉 Fotos com uso de cigarro, álcool, armas, drogas ou cenas violentas não são permitidas em muitas plataformas.</p>
+          <p>🔸 <strong>4. Evite expressões ou gestos ofensivos</strong><br>🖕🤬 Nada de caretas agressivas, dedo do meio ou sinais que possam ser considerados ofensivos.</p>
+          <p>🔸 <strong>5. Não tente imitar celebridades ou figuras públicas</strong><br>🎭 A maioria das IAs proíbe o uso da imagem de pessoas famosas, mesmo como referência indireta.</p>
+          <p>🔸 <strong>6. Respeite a privacidade</strong><br>🔒 Nunca use fotos de outras pessoas sem autorização. Especialmente se for alguém reconhecível.</p>
+          <p>🔸 <strong>7. Nada de conteúdo sexual, violento ou chocante</strong><br>⚠️ Isso inclui ferimentos, sangue, fetiches, insinuações ou qualquer tema que possa chocar. A IA pode rejeitar o prompt e até restringir seu acesso.</p>
+          <p class="pt-2 italic text-sm text-red-500"><strong>💡 Dica final:</strong> se você olhar pra imagem e pensar “será que isso pode dar problema?”... provavelmente é melhor escolher outra 😅</p>
+        </div>
+      </details>
+
+    </div>
+    <!-- FIM DA SEÇÃO DE ORIENTAÇÕES -->
+
     <p class="text-xs text-center text-gray-400 mt-6">
       Criado por <span class="font-semibold">@moisesdovalesouza</span> · 2025
     </p>
@@ -225,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Functions ---
   function updateSettingsFromUI() {
+    settings = {}; 
     settingsSelects.forEach(select => {
       const key = select.dataset.key;
       settings[key] = select.value;
@@ -239,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
         select.value = settings[key];
       }
     });
-    // Limpar checkboxes ao aplicar preset
     Object.keys(efeitos).forEach(key => {
         efeitos[key] = false;
         document.getElementById(`checkbox-${key}`).checked = false;
@@ -254,6 +328,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gerarPrompt() {
     updateSettingsFromUI();
+    const requiredFields = ['plano', 'lente', 'abertura', 'iluminacao', 'atmosfera', 'expressao', 'proporcao', 'borda'];
+    for (const field of requiredFields) {
+        if (!settings[field]) {
+            alert(`Por favor, preencha o campo "${document.querySelector(`label[for=select-${field}]`).textContent}" antes de gerar o prompt.`);
+            return;
+        }
+    }
+
     let extras = [];
     Object.entries(efeitos).forEach(([key, value]) => {
       if (value) {
@@ -290,7 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => copyFeedback.classList.add('hidden'), 2000);
     } catch (err) {
       console.warn("Clipboard API falhou, tentando método alternativo...", err);
-      // Fallback para método antigo
       const textarea = document.createElement("textarea");
       textarea.value = promptText;
       document.body.appendChild(textarea);
@@ -309,15 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Initialization ---
   function initialize() {
-    // Preencher select de presets
+    // Preencher selects
     Object.keys(presets).forEach(presetName => {
       const option = document.createElement('option');
       option.value = presetName;
       option.textContent = presetName;
       presetSelect.appendChild(option);
     });
-
-    // Preencher select de proporções
     proporcoes.forEach(opt => {
       const option = document.createElement('option');
       option.value = opt;
@@ -325,41 +404,46 @@ document.addEventListener('DOMContentLoaded', () => {
       proporcaoSelect.appendChild(option);
     });
 
-    // Criar checkboxes de efeitos
+    // Criar checkboxes
     Object.keys(efeitos).forEach(key => {
         const div = document.createElement('div');
         div.className = 'flex items-center space-x-2';
-        
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `checkbox-${key}`;
         checkbox.dataset.key = key;
         checkbox.className = 'h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500';
-
         const label = document.createElement('label');
         label.htmlFor = `checkbox-${key}`;
         label.textContent = key;
         label.className = 'text-sm text-gray-600';
-        
         div.appendChild(checkbox);
         div.appendChild(label);
         effectsContainer.appendChild(div);
-        
         checkbox.addEventListener('change', (e) => {
             efeitos[e.target.dataset.key] = e.target.checked;
         });
     });
 
-    // Aplicar preset inicial
-    const initialPreset = "Foto profissional (LinkedIn)";
-    presetSelect.value = initialPreset;
-    aplicarPreset(initialPreset);
-
-    // Adicionar Event Listeners
+    // Event Listeners
     presetSelect.addEventListener('change', (e) => aplicarPreset(e.target.value));
     generateButton.addEventListener('click', gerarPrompt);
     copyButton.addEventListener('click', copiarPrompt);
     promptOutput.addEventListener('input', () => copyFeedback.classList.add('hidden'));
+
+    // Lógica do Accordion
+    const accordions = document.querySelectorAll('#accordion-container details');
+    accordions.forEach(accordion => {
+      accordion.addEventListener('toggle', (event) => {
+        if (event.target.open) {
+          accordions.forEach(otherAccordion => {
+            if (otherAccordion !== event.target) {
+              otherAccordion.open = false;
+            }
+          });
+        }
+      });
+    });
   }
 
   initialize();
