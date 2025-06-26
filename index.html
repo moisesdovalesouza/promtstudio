@@ -9,8 +9,7 @@
     <style>
       body {
         font-family: sans-serif;
-        background: #f7f7f7;
-        margin: 0;
+        background: #f0f0f0;
         padding: 2rem;
       }
     </style>
@@ -18,12 +17,33 @@
   <body>
     <div id="root"></div>
 
-    <!-- Seu componente -->
-    <script type="text/babel" src="gerador_prompt_imagem.jsx"></script>
-
-    <!-- Renderização -->
+    <!-- Componente JSX embutido -->
     <script type="text/babel">
-      const root = ReactDOM.createRoot(document.getElementById('root'));
+      function GeradorPromptImagem() {
+        const [prompt, setPrompt] = React.useState("");
+        const [copiado, setCopiado] = React.useState(false);
+
+        const gerarPrompt = () => {
+          setPrompt("Seu prompt gerado aparece aqui!");
+          setCopiado(false);
+        };
+
+        const copiarPrompt = () => {
+          navigator.clipboard.writeText(prompt);
+          setCopiado(true);
+        };
+
+        return (
+          <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+            <h1>PromtStudio</h1>
+            <button onClick={gerarPrompt}>Gerar Prompt</button>
+            <div style={{ margin: "1rem 0", whiteSpace: "pre-wrap" }}>{prompt}</div>
+            <button onClick={copiarPrompt}>{copiado ? "Copiado!" : "Copiar"}</button>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<GeradorPromptImagem />);
     </script>
   </body>
