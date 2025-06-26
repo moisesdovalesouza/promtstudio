@@ -3,16 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PromptStudio</title>
+  <title>PromptStudio - v0.2.0 (Beta)</title>
+  
+  <!-- INCLUSÃO DA FONTE POPPINS DO GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
   <!-- Incluindo o Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Estilos adicionais para replicar a aparência dos componentes shadcn/ui */
+    /* Estilos adicionais */
     body {
       background-color: #f9fafb; /* bg-gray-50 */
+      font-family: 'Poppins', sans-serif; /* Define Poppins como fonte principal */
     }
-    select, textarea, button {
-      transition: all 0.2s ease-in-out;
+    .font-poppins {
+        font-family: 'Poppins', sans-serif;
+    }
+    select, textarea, button, p, label, span, details {
+      font-family: 'Poppins', sans-serif; /* Garante que todos os textos usem Poppins */
     }
     select:focus, textarea:focus {
       outline: 2px solid transparent;
@@ -21,37 +31,41 @@
       box-shadow: 0 0 0 2px var(--tw-ring-color);
       border-color: #a78bfa; /* violet-400 */
     }
-    /* Estilo para o placeholder do select */
-    select:invalid {
-      color: #6b7280; /* text-gray-500 */
-    }
-    /* Remove o marcador padrão do <summary> em todos os navegadores */
-    summary {
-      list-style: none; /* Firefox */
-    }
-    summary::-webkit-details-marker {
-      display: none; /* Chrome, Safari */
+    select:invalid { color: #6b7280; }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .5s ease-in-out; }
+    @keyframes sweep {
+      from { opacity: 0; transform: translateY(-10px) }
+      to   { opacity: 1; transform: translateY(0) }
     }
   </style>
 </head>
 <body>
 
-  <div id="root" class="max-w-3xl mx-auto px-4 py-6">
-    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6 tracking-tight">PromptStudio</h1>
+  <div id="root" class="max-w-3xl mx-auto px-4 py-8">
+    
+    <!-- TÍTULO E SUBTÍTULO ATUALIZADOS -->
+    <div class="text-center mb-8">
+        <h1 class="font-poppins text-5xl font-bold text-gray-800 tracking-tighter">PromptStudio</h1>
+        <p class="text-xl text-gray-500 mt-2">Seu assistente criativo para prompts de imagem.</p>
+    </div>
+
     <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
       <div class="space-y-6">
         <div>
-          <label for="preset-select" class="text-gray-700 text-sm font-medium block mb-2">Estilo predefinido (Opcional)</label>
+          <label for="preset-select" class="text-lg font-semibold text-gray-800 block">Estilo predefinido</label>
+          <span class="block text-sm italic text-gray-500 mb-2">opcional, para preencher os campos rapidamente</span>
           <select id="preset-select" class="w-full p-2 rounded-xl border-gray-300 border bg-white">
             <option value="" disabled selected>Escolha um modelo para começar</option>
-            <!-- As opções de preset serão preenchidas por JavaScript -->
           </select>
         </div>
 
         <!-- Campos de Configuração -->
         <div id="settings-container" class="space-y-4">
           <div>
-            <label for="select-plano" class="block mb-1">Plano (enquadramento da imagem)</label>
+            <label for="select-plano" class="text-lg font-semibold text-gray-800 block">Plano</label>
+            <span class="block text-sm italic text-gray-500 mb-2">enquadramento da imagem</span>
             <select id="select-plano" data-key="plano" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
               <option value="" disabled selected>Selecione o enquadramento</option>
               <option value="primeiro plano">primeiro plano</option>
@@ -60,7 +74,8 @@
             </select>
           </div>
           <div>
-            <label for="select-lente" class="block mb-1">Lente (distância focal usada)</label>
+            <label for="select-lente" class="text-lg font-semibold text-gray-800 block">Lente</label>
+            <span class="block text-sm italic text-gray-500 mb-2">distância focal usada</span>
             <select id="select-lente" data-key="lente" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
               <option value="" disabled selected>Selecione a lente</option>
               <option value="35mm">35mm</option>
@@ -70,7 +85,8 @@
             </select>
           </div>
           <div>
-            <label for="select-abertura" class="block mb-1">Abertura do diafragma (profundidade de campo)</label>
+            <label for="select-abertura" class="text-lg font-semibold text-gray-800 block">Abertura do diafragma</label>
+            <span class="block text-sm italic text-gray-500 mb-2">profundidade de campo</span>
             <select id="select-abertura" data-key="abertura" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
               <option value="" disabled selected>Selecione a abertura</option>
               <option value="f/1.4">f/1.4</option>
@@ -82,7 +98,8 @@
             </select>
           </div>
           <div>
-            <label for="select-iluminacao" class="block mb-1">Iluminação (tipo de luz utilizada)</label>
+            <label for="select-iluminacao" class="text-lg font-semibold text-gray-800 block">Iluminação</label>
+            <span class="block text-sm italic text-gray-500 mb-2">tipo de luz utilizada</span>
             <select id="select-iluminacao" data-key="iluminacao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
                 <option value="" disabled selected>Selecione a iluminação</option>
                 <option value="iluminação suave frontal">iluminação suave frontal</option>
@@ -103,7 +120,8 @@
             </select>
           </div>
           <div>
-            <label for="select-atmosfera" class="block mb-1">Atmosfera/estilo visual (cores, textura, tom)</label>
+            <label for="select-atmosfera" class="text-lg font-semibold text-gray-800 block">Atmosfera/Estilo Visual</label>
+            <span class="block text-sm italic text-gray-500 mb-2">cores, textura, tom</span>
             <select id="select-atmosfera" data-key="atmosfera" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
                 <option value="" disabled selected>Selecione a atmosfera</option>
                 <option value="tons neutros e limpos, fundo claro desfocado">tons neutros e limpos, fundo claro desfocado</option>
@@ -125,7 +143,8 @@
             </select>
           </div>
           <div>
-            <label for="select-expressao" class="block mb-1">Expressão (emoção transmitida pela imagem)</label>
+            <label for="select-expressao" class="text-lg font-semibold text-gray-800 block">Expressão</label>
+            <span class="block text-sm italic text-gray-500 mb-2">emoção transmitida pela imagem</span>
             <select id="select-expressao" data-key="expressao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
                 <option value="" disabled selected>Selecione a expressão</option>
                 <option value="expressão simpática e confiante">expressão simpática e confiante</option>
@@ -152,14 +171,15 @@
             </select>
           </div>
           <div>
-            <label for="select-proporcao" class="block mb-1">Proporção da foto (relação largura-altura)</label>
+            <label for="select-proporcao" class="text-lg font-semibold text-gray-800 block">Proporção da foto</label>
+            <span class="block text-sm italic text-gray-500 mb-2">relação largura-altura</span>
             <select id="select-proporcao" data-key="proporcao" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
               <option value="" disabled selected>Selecione a proporção</option>
-              <!-- Opções preenchidas por JS -->
             </select>
           </div>
           <div>
-            <label for="select-borda" class="block mb-1">Tipo de borda (acabamento da imagem)</label>
+            <label for="select-borda" class="text-lg font-semibold text-gray-800 block">Tipo de borda</label>
+            <span class="block text-sm italic text-gray-500 mb-2">acabamento da imagem</span>
             <select id="select-borda" data-key="borda" class="w-full p-2 rounded-md border-gray-300 border bg-white" required>
                 <option value="" disabled selected>Selecione o tipo de borda</option>
                 <option value="sem bordas">sem bordas</option>
@@ -171,20 +191,21 @@
         </div>
 
         <div>
-          <label class="text-gray-700 text-sm font-medium">Elementos adicionais</label>
-          <div id="effects-container" class="grid grid-cols-2 gap-2 mt-2">
+          <label class="text-lg font-semibold text-gray-800 block">Elementos adicionais</label>
+          <span class="block text-sm italic text-gray-500 mb-2">efeitos e texturas</span>
+          <div id="effects-container" class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
             <!-- Checkboxes preenchidos por JS -->
           </div>
         </div>
 
-        <textarea id="prompt-output" rows="4" class="w-full p-2 rounded-xl border-gray-300 border" placeholder="Seu prompt será gerado aqui..."></textarea>
+        <textarea id="prompt-output" rows="5" class="w-full p-3 rounded-xl border-gray-300 border" placeholder="Seu prompt em inglês será gerado aqui..."></textarea>
 
         <div class="flex flex-col items-center space-y-4">
           <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button id="generate-button" class="w-full sm:w-auto px-4 py-2 bg-violet-600 text-white rounded-xl hover:bg-violet-700">
+            <button id="generate-button" class="w-full sm:w-auto px-6 py-3 bg-violet-600 text-white font-bold rounded-xl hover:bg-violet-700 shadow-lg transform hover:scale-105 transition-transform">
               Gerar Prompt
             </button>
-            <button id="copy-button" class="w-full sm:w-auto px-4 py-2 bg-violet-600 text-white rounded-xl hover:bg-violet-700">
+            <button id="copy-button" class="w-full sm:w-auto px-6 py-3 bg-violet-600 text-white font-bold rounded-xl hover:bg-violet-700 shadow-lg transform hover:scale-105 transition-transform">
               Copiar Prompt
             </button>
           </div>
@@ -197,61 +218,140 @@
       </div>
     </div>
     
-    <!-- INÍCIO DA SEÇÃO DE ORIENTAÇÕES -->
+    <!-- INÍCIO DA SEÇÃO DE ORIENTAÇÕES E NOVIDADES -->
     <div id="accordion-container" class="mt-8 space-y-4">
       
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
-          🛠️ Como usar o gerador de prompt?
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🎉 Novidades
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
-          <p>🔸 <strong>1. Escolha os elementos visuais</strong><br>🎨 Marque os detalhes que quer na imagem: tipo de rosto, estilo, clima, lente, iluminação, etc.</p>
-          <p>🔸 <strong>2. Clique em “Gerar Prompt”</strong><br>⚡ O app vai criar um texto descritivo baseado nas opções que você marcou.</p>
-          <p>🔸 <strong>3. Copie o prompt</strong><br>📋 Clique em “Copiar” pra salvar o texto automaticamente.</p>
-          <p>🔸 <strong>4. Vá até a sua IA favorita (como Midjourney ou Leonardo AI)</strong><br>🧠 Escolha o campo de geração de imagem via prompt.</p>
-          <p>🔸 <strong>5. Faça o upload da foto que quer estilizar</strong><br>📸 Use uma imagem clara, bem iluminada e com rosto visível (veja nossas dicas!).</p>
-          <p>🔸 <strong>6. Cole o prompt no campo de texto</strong><br>📝 Depois de subir a imagem, cole o prompt no mesmo espaço.</p>
-          <p>🔸 <strong>7. Pronto!</strong><br>🚀 Agora é só gerar a imagem estilizada com base na sua foto + descrição!</p>
-          <p class="pt-2 italic text-sm text-gray-500"><strong>Dica extra:</strong> você pode repetir o processo mudando só alguns elementos do prompt pra testar novos estilos 😉</p>
+            <div class="font-semibold">
+                <p>Data: 26 de Junho de 2025</p>
+                <p>Versão: v0.2.0 (Beta)</p>
+            </div>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Prompt em Inglês:</strong> Agora todos os prompts são gerados em inglês para máxima compatibilidade e qualidade com as IAs.</li>
+                <li><strong>Qualidade Aprimorada:</strong> Termos de alta fidelidade (4k, photorealistic, sharp focus, etc.) são adicionados automaticamente ao final de cada prompt.</li>
+                <li><strong>Novo Layout:</strong> Os campos foram reorganizados com subtítulos para facilitar a compreensão de cada opção.</li>
+                <li><strong>Seção de Novidades:</strong> Você está lendo ela agora! Um espaço para acompanhar as atualizações.</li>
+                <li><strong>Links de Apoio:</strong> Adicionados links para apoiar o projeto e enviar sugestões diretamente.</li>
+                <li><strong>Rodapé com Versão:</strong> O número da versão agora é exibido no rodapé da página.</li>
+            </ul>
         </div>
       </details>
 
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
-          📷 Como escolher a melhor foto pra usar no gerador?
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🛠️ Como usar o gerador?
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
-          <p>🔹 <strong>1. Prefira fundo limpo ou desfocado</strong><br>🧱 Parede lisa, céu, cortina ou natureza simples funcionam melhor. Evite bagunça no fundo!</p>
-          <p>🔹 <strong>2. Boa iluminação ajuda muito!</strong><br>💡 Use luz natural ou ambiente bem claro. Evite foto escura ou contra o sol.</p>
-          <p>🔹 <strong>3. Centralize o rosto ou o corpo</strong><br>📍 A pessoa deve estar bem no centro da imagem. Nada de foto cortada ou torta!</p>
-          <p>🔹 <strong>4. Use expressão leve ou natural</strong><br>😐 Rosto neutro, tranquilo ou sonhador funciona melhor que careta ou exagero.</p>
-          <p>🔹 <strong>5. Evite selfies muito próximas</strong><br>🤳 Foto com o celular colado no rosto distorce. Dê um passinho pra trás!</p>
-          <p>🔹 <strong>6. Use fotos nítidas e sem filtro</strong><br>🖼️ Nada de foto borrada ou cheia de filtro. Quanto mais limpa, melhor o resultado.</p>
-          <p>🔹 <strong>7. Cores naturais são melhores</strong><br>🎨 Prefira fotos com tons reais de pele e luz. Esquece os filtros roxos por agora!</p>
+          <p><strong>1. Escolha os elementos visuais</strong><br>🎨 Marque os detalhes que quer na imagem: estilo, clima, lente, iluminação, etc.</p>
+          <p><strong>2. Clique em “Gerar Prompt”</strong><br>⚡ O app vai criar um texto descritivo baseado nas suas opções, já em inglês e otimizado.</p>
+          <p><strong>3. Copie o prompt</strong><br>📋 Clique em “Copiar” para salvar o texto automaticamente.</p>
+          <p><strong>4. Vá até a sua IA favorita (Midjourney, Leonardo AI, etc.)</strong><br>🧠 Escolha o campo de geração de imagem via prompt.</p>
+          <p><strong>5. Faça o upload da sua foto</strong><br>📸 Use uma imagem clara e bem iluminada (veja nossas dicas!).</p>
+          <p><strong>6. Cole o prompt no campo de texto</strong><br>📝 Depois de subir a imagem, cole o prompt que você copiou.</p>
+          <p><strong>7. Pronto!</strong><br>🚀 Agora é só gerar sua nova imagem!</p>
+          <p class="pt-2 italic text-sm text-gray-500"><strong>Dica extra:</strong> você pode repetir o processo mudando só alguns elementos para testar novos estilos 😉</p>
         </div>
       </details>
-
+      
       <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
-        <summary class="p-4 text-center text-lg font-semibold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
-          🚫 Dicas pra evitar bloqueios nas IAs geradoras
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🚀 IAs para Gerar Imagens
+        </summary>
+        <div class="p-6 border-t border-gray-200 text-gray-700 space-y-8">
+            <h2 class="text-xl font-bold text-center text-gray-800 -mt-2 mb-4">Suas Opções e Preços</h2>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">1. DALL-E 3 (via ChatGPT Plus)</h3>
+              <p class="mb-2">O DALL-E 3, desenvolvido pela OpenAI, é um gerador de imagens que se destaca pela capacidade de entender descrições complexas e criar imagens de alta qualidade. Não existe uma versão gratuita autônoma; o acesso é feito principalmente através do ChatGPT Plus, que custa cerca de R$ 100,00 por mês. Ele é ideal para quem busca precisão e detalhes nas criações.</p>
+              <p><strong>Link:</strong> <a href="https://www.zdnet.com/article/how-to-use-dall-e-3-in-chatgpt/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar DALL-E 3</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">2. Microsoft Designer</h3>
+              <p class="mb-2">Criado pela Microsoft, o Microsoft Designer é uma ferramenta de design gráfico que integra o DALL-E 3. Sua interface é bem intuitiva, ótima para iniciantes. A versão gratuita pode ter um limite de gerações diárias (chamados de "boosts"), e a versão completa faz parte da Assinatura Microsoft 365, a partir de R$ 36,00 por mês.</p>
+              <p><strong>Link:</strong> <a href="https://designer.microsoft.com/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar Microsoft Designer</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">3. Leonardo.AI</h3>
+              <p class="mb-2">Desenvolvida por uma start-up homônima, é uma plataforma robusta para quem busca controle detalhado. Oferece diversos modelos pré-treinados, mas a versão gratuita funciona com créditos diários que se esgotam rapidamente. Planos pagos variam de R$ 50,00 a R$ 300,00 por mês.</p>
+              <p><strong>Link:</strong> <a href="https://leonardo.ai/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar Leonardo.AI</a></p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">4. Craiyon (antigo DALL-E Mini)</h3>
+              <p class="mb-2">Inicialmente um projeto open-source, é totalmente gratuito e não exige cadastro, gerando nove imagens por prompt. A qualidade é mais baixa e as imagens têm marca d'água. Planos para remover anúncios e a marca d'água custam a partir de R$ 25,00 por mês.</p>
+              <p><strong>Link:</strong> <a href="https://www.craiyon.com/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar Craiyon</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">5. Adobe Firefly</h3>
+              <p class="mb-2">Desenvolvido pela Adobe, focado na criatividade e integração com o ecossistema Adobe. A versão gratuita opera com créditos generativos mensais limitados. O acesso completo geralmente é via planos Creative Cloud (a partir de R$ 25,00/mês para créditos ou pacotes completos).</p>
+              <p><strong>Link:</strong> <a href="https://www.adobe.com/br/products/firefly.html" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar Adobe Firefly</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">6. DeepAI</h3>
+              <p class="mb-2">Uma opção simples e rápida para criações básicas, embora as imagens gratuitas possam ter baixa resolução e marca d'água. Planos de assinatura para remover anúncios e ter maior resolução começam em R$ 25,00 por mês.</p>
+              <p><strong>Link:</strong> <a href="https://deepai.org/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar DeepAI</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">7. Canva</h3>
+              <p class="mb-2">A popular plataforma de design integrou um gerador de imagens com IA. É super fácil de usar, mas a versão gratuita tem um número limitado de créditos. O Canva Pro (cerca de R$ 34,90 por mês) oferece mais créditos e recursos.</p>
+              <p><strong>Link:</strong> <a href="https://www.canva.com/ai-image-generator/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar IA do Canva</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">8. Pixlr</h3>
+              <p class="mb-2">Um editor de fotos online que também inclui um gerador de imagem por IA. A versão gratuita pode exibir anúncios e ter limitações. Planos pagos variam de R$ 24,50 a R$ 75,00 por mês para acesso total.</p>
+              <p><strong>Link:</strong> <a href="https://pixlr.com/br/" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar Pixlr</a></p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-1">9. Freepik</h3>
+              <p class="mb-2">Conhecido por seus recursos gráficos, agora oferece um gerador de imagens com IA. O número de gerações gratuitas é limitado. A assinatura Premium (cerca de R$ 75,00 por mês) dá mais créditos e acesso ilimitado à biblioteca.</p>
+              <p><strong>Link:</strong> <a href="https://br.freepik.com/ai/gerador-imagens" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Acessar IA do Freepik</a></p>
+            </div>
+
+        </div>
+      </details>
+      
+      <details class="bg-white border rounded-lg shadow-sm transition-all duration-300">
+        <summary class="p-4 text-center text-xl font-bold text-gray-800 cursor-pointer hover:bg-gray-50 rounded-lg">
+          🚫 Dicas para evitar bloqueios
         </summary>
         <div class="p-6 border-t border-gray-200 text-gray-700 space-y-4">
-          <p>🔸 <strong>1. Nada de nudez ou pouca roupa</strong><br>🙅‍♀️ Evite fotos sem camisa, com lingerie, trajes íntimos ou poses sensuais demais. A IA pode bloquear ou banir.</p>
-          <p>🔸 <strong>2. Não use fotos de crianças ou adolescentes</strong><br>🧒 Por segurança e ética, evite qualquer imagem de menores de idade, mesmo com roupa. Pode gerar restrição automática.</p>
-          <p>🔸 <strong>3. Cuidado com conteúdo sensível</strong><br>🚬💉 Fotos com uso de cigarro, álcool, armas, drogas ou cenas violentas não são permitidas em muitas plataformas.</p>
-          <p>🔸 <strong>4. Evite expressões ou gestos ofensivos</strong><br>🖕🤬 Nada de caretas agressivas, dedo do meio ou sinais que possam ser considerados ofensivos.</p>
-          <p>🔸 <strong>5. Não tente imitar celebridades ou figuras públicas</strong><br>🎭 A maioria das IAs proíbe o uso da imagem de pessoas famosas, mesmo como referência indireta.</p>
-          <p>🔸 <strong>6. Respeite a privacidade</strong><br>🔒 Nunca use fotos de outras pessoas sem autorização. Especialmente se for alguém reconhecível.</p>
-          <p>🔸 <strong>7. Nada de conteúdo sexual, violento ou chocante</strong><br>⚠️ Isso inclui ferimentos, sangue, fetiches, insinuações ou qualquer tema que possa chocar. A IA pode rejeitar o prompt e até restringir seu acesso.</p>
-          <p class="pt-2 italic text-sm text-red-500"><strong>💡 Dica final:</strong> se você olhar pra imagem e pensar “será que isso pode dar problema?”... provavelmente é melhor escolher outra 😅</p>
+          <p><strong>1. Nada de nudez ou pouca roupa:</strong> 🙅‍♀️ Evite fotos sem camisa, com lingerie, biquíni ou poses sensuais.</p>
+          <p><strong>2. Não use fotos de crianças ou adolescentes:</strong> 🧒 Por segurança, evite qualquer imagem de menores de idade.</p>
+          <p><strong>3. Cuidado com conteúdo sensível:</strong> 🚬💉 Fotos com cigarros, álcool, armas ou drogas não são permitidas.</p>
+          <p><strong>4. Evite gestos ofensivos:</strong> 🖕🤬 Nada de caretas agressivas ou sinais que possam ser considerados ofensivos.</p>
+          <p><strong>5. Não tente imitar celebridades:</strong> 🎭 A maioria das IAs proíbe o uso da imagem de pessoas famosas.</p>
+          <p><strong>6. Respeite a privacidade:</strong> 🔒 Nunca use fotos de outras pessoas sem autorização.</p>
+          <p><strong>7. Nada de conteúdo chocante:</strong> ⚠️ Isso inclui ferimentos, sangue ou qualquer tema que possa chocar.</p>
+          <p class="pt-2 italic text-sm text-red-500"><strong>💡 Dica final:</strong> Na dúvida, não use a foto. Se você pensa “será que isso pode dar problema?”, provavelmente é melhor escolher outra 😅</p>
         </div>
       </details>
 
     </div>
     <!-- FIM DA SEÇÃO DE ORIENTAÇÕES -->
+    
+    <!-- SEÇÃO DE CONTRIBUIÇÕES E SUGESTÕES -->
+    <div class="mt-8 text-center space-y-4">
+        <a href="https://link.mercadopago.com.br/oficinacinco91" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-cyan-600 transition-colors">
+            💰 Apoie o projeto
+        </a>
+        <a href="mailto:moisesdovalesouza@gmail.com?subject=Sugestão para o PromptStudio" class="inline-block bg-gray-700 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-gray-800 transition-colors">
+            💡 Envie sua sugestão
+        </a>
+    </div>
 
-    <p class="text-xs text-center text-gray-400 mt-6">
-      Criado por <span class="font-semibold">@moisesdovalesouza</span> · 2025
+    <p class="text-xs text-center text-gray-500 mt-6">
+      Criado por <span class="font-semibold text-gray-600">@moisesdovalesouza</span> · v0.2.0 (Beta)
     </p>
   </div>
 
@@ -283,6 +383,27 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const proporcoes = [ "1:1 (quadrado)", "1:1 com espaço inferior ampliado", "2:3 (vertical)", "2:3 (horizontal)", "3:4 (vertical)", "3:4 (horizontal)", "4:5 (vertical)", "4:5 (horizontal)", "16:9 (vertical)", "16:9 (horizontal)", "9:16 (vertical)", "9:16 (horizontal)", "2.39:1 (vertical)", "2.39:1 (horizontal)", "19.5:9 (iPhone)", "20:9 (Samsung Galaxy)", "8.5:11 (vertical)" ];
 
+  // *** DICIONÁRIO DE TRADUÇÃO ***
+  const traducoes = {
+    // Planos
+    "primeiro plano": "close-up shot", "plano médio": "medium shot", "plano americano": "american shot",
+    // Iluminação
+    "iluminação suave frontal": "soft frontal lighting", "luz natural com sombras suaves": "natural light with soft shadows", "flash direto com sombra marcada": "direct flash with hard shadow", "luz lateral forte com fundo colorido": "strong side light with a colored background", "iluminação de fundo e efeito de flare": "backlighting with a lens flare effect", "luz natural suave com sombra dourada": "soft natural light with a golden shadow", "flash direto e luz ambiente": "direct flash and ambient light", "luz lateral natural com flare leve": "natural side light with a soft flare", "iluminação difusa com sombra esverdeada": "diffused lighting with a greenish shadow", "luz natural crua": "raw natural light", "luz frontal difusa com fundo liso": "diffused front light with a plain background", "luz frontal com recorte limpo": "front light with a clean cutout", "iluminação suave lateral": "soft side lighting", "luz natural suave com flare": "soft natural light with flare", "luz de palco colorida": "colored stage lighting",
+    // Atmosfera
+    "tons neutros e limpos, fundo claro desfocado": "neutral and clean tones, light blurred background", "tons levemente saturados com nitidez alta": "slightly saturated tones with high sharpness", "cores lavadas e granulação estilo VHS": "washed-out colors with VHS-style grain", "cores vibrantes e estética de retrato de estúdio": "vibrant colors and studio portrait aesthetic", "alto contraste com fundo azulado ou esverdeado": "high contrast with a bluish or greenish background", "tonalidade quente, granulação leve e desfoque orgânico": "warm tonality, light grain, and organic blur", "tons desbotados com vinheta e fundo suave": "faded tones with a vignette and soft background", "cores lavadas, fundo desfocado, estilo tumblr": "washed-out colors, blurred background, tumblr aesthetic", "textura de filme e tonalidade sépia": "film texture and sepia tonality", "fundo branco uniforme": "uniform white background", "tons âmbar e fundo vintage": "amber tones and vintage background", "preto e branco com alto contraste": "black and white with high contrast", "preto e branco com sombra marcada": "black and white with a hard shadow", "contraste urbano e tons realistas": "urban contrast and realistic tones", "fumaça e contraste dinâmico": "smoke and dynamic contrast", "cores naturais com leve vinheta": "natural colors with a slight vignette",
+    // Expressão
+    "expressão simpática e confiante": "friendly and confident expression", "expressão espontânea e introspectiva": "spontaneous and introspective expression", "expressão descontraída e nostálgica": "relaxed and nostalgic expression", "olhar direto, pose clássica e séria": "direct gaze, classic and serious pose", "expressão cool e despreocupada": "cool and carefree expression", "expressão leve e nostálgica": "light and nostalgic expression", "sorriso espontâneo e despreocupado": "spontaneous and carefree smile", "olhar introspectivo com leve ironia": "introspective gaze with a hint of irony", "expressão neutra e direta": "neutral and direct expression", "sorriso leve e olhar espontâneo": "slight smile and spontaneous gaze", "expressão dramática e contemplativa": "dramatic and contemplative expression", "expressão introspectiva": "introspective expression", "expressão apaixonada e espontânea": "passionate and spontaneous expression", "expressão distante e melancólica": "distant and melancholic expression", "expressão séria e misteriosa": "serious and mysterious expression", "risada espontânea": "spontaneous laughter", "olhar direto para a lente": "direct look into the lens", "olhar marcante e sofisticado": "striking and sophisticated gaze", "pose firme e olhar marcante": "strong pose and striking gaze", "expressão sonhadora e irônica": "dreamy and ironic expression", "movimento e expressão intensa": "movement and intense expression",
+    // Proporção (parcial)
+    "(quadrado)": "(square)", "(vertical)": "(vertical)", "(horizontal)": "(horizontal)", "(iPhone)": "(iPhone)", "(Samsung Galaxy)": "(Samsung Galaxy)", "com espaço inferior ampliado": "with expanded bottom space",
+    // Bordas
+    "sem bordas": "no borders", "borda branca suave": "soft white border", "borda escura": "dark border", "borda branca espessa inferior (estilo polaroid)": "thick white bottom border (polaroid style)",
+    // Efeitos
+    "data": "timestamp printed on the image", "vazamento": "nostalgic light leak", "pelos": "film grain and small dust particles", "granulado": "visible analog grain", "poeira": "scattered sun dust", "vinheta": "dark vignette on the edges", "gotas": "water drops running down the face", "neve": "scattered snowflakes", "sol": "sun rays coming from the side", "vapor": "soft vapor enveloping the image", "brilho": "soft bokeh lights in the background", "respingos": "water splashes or suspended particles"
+  };
+
+  // *** SUFIXO DE QUALIDADE DO PROMPT ***
+  const PROMPT_SUFFIX = ", 4k, hd, high-resolution photo, photorealistic, sharp focus, extremely detailed face and skin, no distortion, original facial structure preserved, preserve exact facial features: teeth size, nose shape, face proportions, jawline, bone structure, distance between eyes, lip thickness, eyebrow shape, eye size and color, ear position, skin tone, face width and height ratio, same facial expressions and symmetry, people clearly visible, no blending or fusion";
+
   // --- State Variables ---
   let settings = {};
   let efeitos = { data: false, vazamento: false, pelos: false, granulado: false, poeira: false, vinheta: false, gotas: false, neve: false, sol: false, vapor: false, brilho: false, respingos: false };
@@ -298,13 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const proporcaoSelect = document.getElementById('select-proporcao');
 
   // --- Functions ---
-  function updateSettingsFromUI() {
-    settings = {}; 
-    settingsSelects.forEach(select => {
-      const key = select.dataset.key;
-      settings[key] = select.value;
-    });
-  }
+  const translate = (term) => traducoes[term] || term;
   
   function updateUI(newSettings) {
     settings = { ...newSettings };
@@ -327,11 +442,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function gerarPrompt() {
-    updateSettingsFromUI();
+    let currentSettings = {};
+    settingsSelects.forEach(select => {
+      currentSettings[select.dataset.key] = select.value;
+    });
+    
+    // Validação
     const requiredFields = ['plano', 'lente', 'abertura', 'iluminacao', 'atmosfera', 'expressao', 'proporcao', 'borda'];
     for (const field of requiredFields) {
-        if (!settings[field]) {
-            alert(`Por favor, preencha o campo "${document.querySelector(`label[for=select-${field}]`).textContent}" antes de gerar o prompt.`);
+        if (!currentSettings[field]) {
+            const labelElement = document.querySelector(`label[for=select-${field}]`);
+            alert(`Por favor, preencha o campo "${labelElement.textContent}" antes de gerar o prompt.`);
             return;
         }
     }
@@ -339,23 +460,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let extras = [];
     Object.entries(efeitos).forEach(([key, value]) => {
       if (value) {
-        if (key === 'data') extras.push("data impressa na imagem");
-        if (key === 'vazamento') extras.push("vazamento de luz nostálgico");
-        if (key === 'pelos') extras.push("pequenos pelos ou sujeiras típicas de filme");
-        if (key === 'granulado') extras.push("granulação analógica visível");
-        if (key === 'poeira') extras.push("poeira solar dispersa");
-        if (key === 'vinheta') extras.push("vinheta escura nas bordas");
-        if (key === 'gotas') extras.push("gotas de água escorrendo no rosto");
-        if (key === 'neve') extras.push("flocos de neve dispersos");
-        if (key === 'sol') extras.push("raios de sol incidindo pela lateral");
-        if (key === 'vapor') extras.push("vapor suave envolvendo a imagem");
-        if (key === 'brilho') extras.push("pontos de brilho suave no fundo");
-        if (key === 'respingos') extras.push("respingos d'água ou partículas suspensas");
+        extras.push(translate(key));
       }
     });
 
-    const texto = `Gere o retrato em ${settings.plano} com lente de ${settings.lente}, proporção ${settings.proporcao}, fundo desfocado com profundidade de campo curta (${settings.abertura}), ${settings.iluminacao}, atmosfera poética em ${settings.atmosfera}, ${settings.expressao}, com ${settings.borda}${extras.length > 0 ? ", incluindo elementos como " + extras.join(", ") : ""}.`;
-    promptOutput.value = texto;
+    // Tradução da proporção
+    let translatedProporcao = currentSettings.proporcao;
+    Object.entries(traducoes).forEach(([pt, en]) => {
+      if (translatedProporcao.includes(pt)) {
+        translatedProporcao = translatedProporcao.replace(pt, en);
+      }
+    });
+
+    const promptBase = `A photograph, ${translate(currentSettings.plano)} with a ${currentSettings.lente} lens, aspect ratio ${translatedProporcao}, shallow depth of field (${currentSettings.abertura}), ${translate(currentSettings.iluminacao)}, poetic atmosphere with ${translate(currentSettings.atmosfera)}, ${translate(currentSettings.expressao)}, with ${translate(currentSettings.borda)}`;
+    const extrasText = extras.length > 0 ? `, including elements like ${extras.join(", ")}` : "";
+
+    promptOutput.value = promptBase + extrasText + PROMPT_SUFFIX;
     copyFeedback.classList.add('hidden');
   }
 
@@ -365,7 +485,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Antes de copiar, gere o prompt.");
       return;
     }
-
     try {
       await navigator.clipboard.writeText(promptText);
       copyFeedback.classList.remove('hidden');
@@ -388,9 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Initialization ---
   function initialize() {
-    // Preencher selects
     Object.keys(presets).forEach(presetName => {
       const option = document.createElement('option');
       option.value = presetName;
@@ -403,35 +520,30 @@ document.addEventListener('DOMContentLoaded', () => {
       option.textContent = opt;
       proporcaoSelect.appendChild(option);
     });
-
-    // Criar checkboxes
     Object.keys(efeitos).forEach(key => {
         const div = document.createElement('div');
         div.className = 'flex items-center space-x-2';
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `checkbox-${key}`;
-        checkbox.dataset.key = key;
         checkbox.className = 'h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500';
         const label = document.createElement('label');
         label.htmlFor = `checkbox-${key}`;
-        label.textContent = key;
-        label.className = 'text-sm text-gray-600';
+        label.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+        label.className = 'text-sm text-gray-600 cursor-pointer';
         div.appendChild(checkbox);
         div.appendChild(label);
         effectsContainer.appendChild(div);
         checkbox.addEventListener('change', (e) => {
-            efeitos[e.target.dataset.key] = e.target.checked;
+            efeitos[key] = e.target.checked;
         });
     });
 
-    // Event Listeners
     presetSelect.addEventListener('change', (e) => aplicarPreset(e.target.value));
     generateButton.addEventListener('click', gerarPrompt);
     copyButton.addEventListener('click', copiarPrompt);
     promptOutput.addEventListener('input', () => copyFeedback.classList.add('hidden'));
 
-    // Lógica do Accordion
     const accordions = document.querySelectorAll('#accordion-container details');
     accordions.forEach(accordion => {
       accordion.addEventListener('toggle', (event) => {
