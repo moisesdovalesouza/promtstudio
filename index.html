@@ -1,50 +1,373 @@
+Claro, aqui está o código JSX transformado em um arquivo HTML completo, com CSS via CDN do Tailwind e JavaScript vanilla para replicar a funcionalidade do componente React. Nada foi suprimido ou alterado em termos de funcionalidade, opções ou lógica.
+
+Generated html
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>PromtStudio</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-      body {
-        font-family: sans-serif;
-        background: #f0f0f0;
-        padding: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptStudio</title>
+  <!-- Incluindo o Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Estilos adicionais para replicar a aparência dos componentes shadcn/ui */
+    body {
+      background-color: #f9fafb; /* bg-gray-50 */
+    }
+    select, textarea, button {
+      transition: all 0.2s ease-in-out;
+    }
+    select:focus, textarea:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      --tw-ring-color: #8b5cf6; /* violet-500 */
+      box-shadow: 0 0 0 2px var(--tw-ring-color);
+      border-color: #a78bfa; /* violet-400 */
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Componente JSX embutido -->
-    <script type="text/babel">
-      function GeradorPromptImagem() {
-        const [prompt, setPrompt] = React.useState("");
-        const [copiado, setCopiado] = React.useState(false);
+  <div id="root" class="max-w-3xl mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6 tracking-tight">PromptStudio</h1>
+    <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
+      <div class="space-y-6">
+        <div>
+          <label for="preset-select" class="text-gray-700 text-sm font-medium block mb-2">Estilo predefinido</label>
+          <select id="preset-select" class="w-full p-2 rounded-xl border-gray-300 border bg-white">
+            <!-- As opções de preset serão preenchidas por JavaScript -->
+          </select>
+        </div>
 
-        const gerarPrompt = () => {
-          setPrompt("Seu prompt gerado aparece aqui!");
-          setCopiado(false);
-        };
-
-        const copiarPrompt = () => {
-          navigator.clipboard.writeText(prompt);
-          setCopiado(true);
-        };
-
-        return (
-          <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-            <h1>PromtStudio</h1>
-            <button onClick={gerarPrompt}>Gerar Prompt</button>
-            <div style={{ margin: "1rem 0", whiteSpace: "pre-wrap" }}>{prompt}</div>
-            <button onClick={copiarPrompt}>{copiado ? "Copiado!" : "Copiar"}</button>
+        <!-- Campos de Configuração -->
+        <div id="settings-container" class="space-y-4">
+          <div>
+            <label for="select-plano" class="block mb-1">Plano (enquadramento da imagem)</label>
+            <select id="select-plano" data-key="plano" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+              <option value="primeiro plano">primeiro plano</option>
+              <option value="plano médio">plano médio</option>
+              <option value="plano americano">plano americano</option>
+            </select>
           </div>
-        );
-      }
+          <div>
+            <label for="select-lente" class="block mb-1">Lente (distância focal usada)</label>
+            <select id="select-lente" data-key="lente" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+              <option value="35mm">35mm</option>
+              <option value="85mm">85mm</option>
+              <option value="50mm">50mm</option>
+              <option value="24mm">24mm</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-abertura" class="block mb-1">Abertura do diafragma (profundidade de campo)</label>
+            <select id="select-abertura" data-key="abertura" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+              <option value="f/1.8">f/1.8</option>
+              <option value="f/2.8">f/2.8</option>
+              <option value="f/8">f/8</option>
+              <option value="f/1.4">f/1.4</option>
+              <option value="f/4">f/4</option>
+              <option value="f/2.0">f/2.0</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-iluminacao" class="block mb-1">Iluminação (tipo de luz utilizada)</label>
+            <select id="select-iluminacao" data-key="iluminacao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+                <option value="iluminação suave frontal">iluminação suave frontal</option>
+                <option value="luz natural com sombras suaves">luz natural com sombras suaves</option>
+                <option value="flash direto com sombra marcada">flash direto com sombra marcada</option>
+                <option value="luz lateral forte com fundo colorido">luz lateral forte com fundo colorido</option>
+                <option value="iluminação de fundo e efeito de flare">iluminação de fundo e efeito de flare</option>
+                <option value="luz natural suave com sombra dourada">luz natural suave com sombra dourada</option>
+                <option value="flash direto e luz ambiente">flash direto e luz ambiente</option>
+                <option value="luz lateral natural com flare leve">luz lateral natural com flare leve</option>
+                <option value="iluminação difusa com sombra esverdeada">iluminação difusa com sombra esverdeada</option>
+                <option value="luz natural crua">luz natural crua</option>
+                <option value="luz frontal difusa com fundo liso">luz frontal difusa com fundo liso</option>
+                <option value="luz frontal com recorte limpo">luz frontal com recorte limpo</option>
+                <option value="iluminação suave lateral">iluminação suave lateral</option>
+                <option value="luz natural suave com flare">luz natural suave com flare</option>
+                <option value="luz de palco colorida">luz de palco colorida</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-atmosfera" class="block mb-1">Atmosfera/estilo visual (cores, textura, tom)</label>
+            <select id="select-atmosfera" data-key="atmosfera" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+                <option value="tons neutros e limpos, fundo claro desfocado">tons neutros e limpos, fundo claro desfocado</option>
+                <option value="tons levemente saturados com nitidez alta">tons levemente saturados com nitidez alta</option>
+                <option value="cores lavadas e granulação estilo VHS">cores lavadas e granulação estilo VHS</option>
+                <option value="cores vibrantes e estética de retrato de estúdio">cores vibrantes e estética de retrato de estúdio</option>
+                <option value="alto contraste com fundo azulado ou esverdeado">alto contraste com fundo azulado ou esverdeado</option>
+                <option value="tonalidade quente, granulação leve e desfoque orgânico">tonalidade quente, granulação leve e desfoque orgânico</option>
+                <option value="tons desbotados com vinheta e fundo suave">tons desbotados com vinheta e fundo suave</option>
+                <option value="cores lavadas, fundo desfocado, estilo tumblr">cores lavadas, fundo desfocado, estilo tumblr</option>
+                <option value="textura de filme e tonalidade sépia">textura de filme e tonalidade sépia</option>
+                <option value="fundo branco uniforme">fundo branco uniforme</option>
+                <option value="tons âmbar e fundo vintage">tons âmbar e fundo vintage</option>
+                <option value="preto e branco com alto contraste">preto e branco com alto contraste</option>
+                <option value="preto e branco com sombra marcada">preto e branco com sombra marcada</option>
+                <option value="contraste urbano e tons realistas">contraste urbano e tons realistas</option>
+                <option value="fumaça e contraste dinâmico">fumaça e contraste dinâmico</option>
+                <option value="cores naturais com leve vinheta">cores naturais com leve vinheta</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-expressao" class="block mb-1">Expressão (emoção transmitida pela imagem)</label>
+            <select id="select-expressao" data-key="expressao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+                <option value="expressão simpática e confiante">expressão simpática e confiante</option>
+                <option value="expressão espontânea e introspectiva">expressão espontânea e introspectiva</option>
+                <option value="expressão descontraída e nostálgica">expressão descontraída e nostálgica</option>
+                <option value="olhar direto, pose clássica e séria">olhar direto, pose clássica e séria</option>
+                <option value="expressão cool e despreocupada">expressão cool e despreocupada</option>
+                <option value="expressão leve e nostálgica">expressão leve e nostálgica</option>
+                <option value="sorriso espontâneo e despreocupado">sorriso espontâneo e despreocupado</option>
+                <option value="olhar introspectivo com leve ironia">olhar introspectivo com leve ironia</option>
+                <option value="expressão neutra e direta">expressão neutra e direta</option>
+                <option value="sorriso leve e olhar espontâneo">sorriso leve e olhar espontâneo</option>
+                <option value="expressão dramática e contemplativa">expressão dramática e contemplativa</option>
+                <option value="expressão introspectiva">expressão introspectiva</option>
+                <option value="expressão apaixonada e espontânea">expressão apaixonada e espontânea</option>
+                <option value="expressão distante e melancólica">expressão distante e melancólica</option>
+                <option value="expressão séria e misteriosa">expressão séria e misteriosa</option>
+                <option value="risada espontânea">risada espontânea</option>
+                <option value="olhar direto para a lente">olhar direto para a lente</option>
+                <option value="olhar marcante e sofisticado">olhar marcante e sofisticado</option>
+                <option value="pose firme e olhar marcante">pose firme e olhar marcante</option>
+                <option value="expressão sonhadora e irônica">expressão sonhadora e irônica</option>
+                <option value="movimento e expressão intensa">movimento e expressão intensa</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-proporcao" class="block mb-1">Proporção da foto (relação largura-altura)</label>
+            <select id="select-proporcao" data-key="proporcao" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+              <!-- Opções preenchidas por JS -->
+            </select>
+          </div>
+          <div>
+            <label for="select-borda" class="block mb-1">Tipo de borda (acabamento da imagem)</label>
+            <select id="select-borda" data-key="borda" class="w-full p-2 rounded-md border-gray-300 border bg-white">
+                <option value="sem bordas">sem bordas</option>
+                <option value="borda branca suave">borda branca suave</option>
+                <option value="borda escura">borda escura</option>
+                <option value="borda branca espessa inferior (estilo polaroid)">borda branca espessa inferior (estilo polaroid)</option>
+            </select>
+          </div>
+        </div>
 
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(<GeradorPromptImagem />);
-    </script>
-  </body>
+        <div>
+          <label class="text-gray-700 text-sm font-medium">Elementos adicionais</label>
+          <div id="effects-container" class="grid grid-cols-2 gap-2 mt-2">
+            <!-- Checkboxes preenchidos por JS -->
+          </div>
+        </div>
+
+        <textarea id="prompt-output" rows="4" class="w-full p-2 rounded-xl border-gray-300 border"></textarea>
+
+        <div class="flex flex-col items-center space-y-4">
+          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <button id="generate-button" class="w-full sm:w-auto px-4 py-2 bg-violet-600 text-white rounded-xl hover:bg-violet-700">
+              Gerar Prompt
+            </button>
+            <button id="copy-button" class="w-full sm:w-auto px-4 py-2 bg-violet-600 text-white rounded-xl hover:bg-violet-700">
+              Copiar Prompt
+            </button>
+          </div>
+          <div id="copy-feedback" class="hidden">
+            <svg class="text-green-500 animate-pulse mt-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-center text-gray-400 mt-6">
+      Criado por <span class="font-semibold">@moisesdovalesouza</span> · 2025
+    </p>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const presets = {
+    "Foto para documento oficial": { plano: "primeiro plano", lente: "85mm", abertura: "f/2.8", iluminacao: "iluminação suave frontal", atmosfera: "fundo branco uniforme", expressao: "expressão neutra e direta", proporcao: "3:4 (vertical)", borda: "sem bordas" },
+    "Foto profissional (LinkedIn)": { plano: "primeiro plano", lente: "85mm", abertura: "f/2.8", iluminacao: "iluminação suave lateral", atmosfera: "tons neutros e limpos, fundo claro desfocado", expressao: "expressão simpática e confiante", proporcao: "3:4 (vertical)", borda: "sem bordas" },
+    "Perfil do Instagram": { plano: "primeiro plano", lente: "35mm", abertura: "f/1.8", iluminacao: "luz natural suave com sombra dourada", atmosfera: "tonalidade quente, granulação leve e desfoque orgânico", expressao: "sorriso leve e olhar espontâneo", proporcao: "4:5 (vertical)", borda: "sem bordas" },
+    "Retrato vintage clássico": { plano: "plano médio", lente: "50mm", abertura: "f/2.8", iluminacao: "flash direto com sombra marcada", atmosfera: "textura de filme e tonalidade sépia", expressao: "olhar direto, pose clássica e séria", proporcao: "2:3 (vertical)", borda: "borda branca suave" },
+    "Polaroid de aniversário": { plano: "plano médio", lente: "35mm", abertura: "f/2.8", iluminacao: "flash direto e luz ambiente", atmosfera: "tons desbotados com vinheta e fundo suave", expressao: "sorriso espontâneo e despreocupado", proporcao: "1:1 com espaço inferior ampliado", borda: "borda branca espessa inferior (estilo polaroid)" },
+    "Foto de casal na praia": { plano: "plano americano", lente: "35mm", abertura: "f/2.8", iluminacao: "luz natural suave com sombra dourada", atmosfera: "tonalidade quente, granulação leve e desfoque orgânico", expressao: "expressão apaixonada e espontânea", proporcao: "3:4 (horizontal)", borda: "sem bordas" },
+    "Capa estilo cinema": { plano: "plano americano", lente: "35mm", abertura: "f/2.8", iluminacao: "luz natural com sombras suaves", atmosfera: "alto contraste com fundo azulado ou esverdeado", expressao: "expressão dramática e contemplativa", proporcao: "2.39:1 (horizontal)", borda: "sem bordas" },
+    "Foto artística com sombra": { plano: "primeiro plano", lente: "50mm", abertura: "f/1.8", iluminacao: "luz lateral forte com fundo colorido", atmosfera: "preto e branco com alto contraste", expressao: "expressão introspectiva", proporcao: "2:3 (vertical)", borda: "sem bordas" },
+    "Foto estética tumblr": { plano: "primeiro plano", lente: "35mm", abertura: "f/1.8", iluminacao: "luz natural suave com flare", atmosfera: "cores lavadas, fundo desfocado, estilo tumblr", expressao: "olhar introspectivo com leve ironia", proporcao: "4:5 (vertical)", borda: "sem bordas" },
+    "Capa de álbum indie": { plano: "plano médio", lente: "35mm", abertura: "f/2.8", iluminacao: "luz lateral forte com fundo colorido", atmosfera: "cores lavadas e granulação estilo VHS", expressao: "expressão distante e melancólica", proporcao: "1:1 (quadrado)", borda: "borda escura" },
+    "Wallpaper iPhone": { plano: "plano americano", lente: "50mm", abertura: "f/2.8", iluminacao: "iluminação de fundo e efeito de flare", atmosfera: "alto contraste com fundo azulado ou esverdeado", expressao: "expressão introspectiva", proporcao: "19.5:9 (iPhone)", borda: "sem bordas" },
+    "Wallpaper Samsung": { plano: "plano americano", lente: "50mm", abertura: "f/2.8", iluminacao: "iluminação de fundo e efeito de flare", atmosfera: "alto contraste com fundo azulado ou esverdeado", expressao: "expressão introspectiva", proporcao: "20:9 (Samsung Galaxy)", borda: "sem bordas" },
+    "Foto estilo francês retrô": { plano: "primeiro plano", lente: "35mm", abertura: "f/2.8", iluminacao: "iluminação difusa com sombra esverdeada", atmosfera: "tons âmbar e fundo vintage", expressao: "expressão sonhadora e irônica", proporcao: "3:4 (vertical)", borda: "sem bordas" },
+    "Estilo analógico dos anos 90": { plano: "plano médio", lente: "35mm", abertura: "f/4", iluminacao: "flash direto e luz ambiente", atmosfera: "cores vibrantes e estética de retrato de estúdio", expressao: "expressão cool e despreocupada", proporcao: "2:3 (vertical)", borda: "borda branca suave" },
+    "Foto editorial de moda": { plano: "plano americano", lente: "85mm", abertura: "f/2.8", iluminacao: "luz frontal difusa com fundo liso", atmosfera: "tons levemente saturados com nitidez alta", expressao: "pose firme e olhar marcante", proporcao: "3:4 (vertical)", borda: "sem bordas" },
+    "Estilo cinema noir": { plano: "plano médio", lente: "50mm", abertura: "f/1.4", iluminacao: "flash direto com sombra marcada", atmosfera: "preto e branco com sombra marcada", expressao: "expressão séria e misteriosa", proporcao: "2.39:1 (horizontal)", borda: "sem bordas" },
+    "Foto de banda ao vivo": { plano: "plano americano", lente: "85mm", abertura: "f/2.0", iluminacao: "luz de palco colorida", atmosfera: "fumaça e contraste dinâmico", expressao: "movimento e expressão intensa", proporcao: "16:9 (horizontal)", borda: "sem bordas" },
+    "Foto espontânea ao ar livre": { plano: "plano médio", lente: "35mm", abertura: "f/2.8", iluminacao: "luz natural com sombras suaves", atmosfera: "cores naturais com leve vinheta", expressao: "risada espontânea", proporcao: "3:4 (vertical)", borda: "sem bordas" },
+    "Foto documental de rua": { plano: "plano americano", lente: "35mm", abertura: "f/4", iluminacao: "luz natural crua", atmosfera: "contraste urbano e tons realistas", expressao: "olhar direto para a lente", proporcao: "2:3 (horizontal)", borda: "sem bordas" },
+    "Estilo capa de revista": { plano: "primeiro plano", lente: "85mm", abertura: "f/1.8", iluminacao: "luz frontal com recorte limpo", atmosfera: "tons levemente saturados com nitidez alta", expressao: "olhar marcante e sofisticado", proporcao: "8.5:11 (vertical)", borda: "sem bordas" }
+  };
+  
+  const proporcoes = [ "1:1 (quadrado)", "1:1 com espaço inferior ampliado", "2:3 (vertical)", "2:3 (horizontal)", "3:4 (vertical)", "3:4 (horizontal)", "4:5 (vertical)", "4:5 (horizontal)", "16:9 (vertical)", "16:9 (horizontal)", "9:16 (vertical)", "9:16 (horizontal)", "2.39:1 (vertical)", "2.39:1 (horizontal)", "19.5:9 (iPhone)", "20:9 (Samsung Galaxy)", "8.5:11 (vertical)" ];
+
+  // --- State Variables ---
+  let settings = {};
+  let efeitos = { data: false, vazamento: false, pelos: false, granulado: false, poeira: false, vinheta: false, gotas: false, neve: false, sol: false, vapor: false, brilho: false, respingos: false };
+
+  // --- DOM Elements ---
+  const presetSelect = document.getElementById('preset-select');
+  const settingsSelects = document.querySelectorAll('#settings-container select');
+  const effectsContainer = document.getElementById('effects-container');
+  const promptOutput = document.getElementById('prompt-output');
+  const generateButton = document.getElementById('generate-button');
+  const copyButton = document.getElementById('copy-button');
+  const copyFeedback = document.getElementById('copy-feedback');
+  const proporcaoSelect = document.getElementById('select-proporcao');
+
+  // --- Functions ---
+  function updateSettingsFromUI() {
+    settingsSelects.forEach(select => {
+      const key = select.dataset.key;
+      settings[key] = select.value;
+    });
+  }
+  
+  function updateUI(newSettings) {
+    settings = { ...newSettings };
+    settingsSelects.forEach(select => {
+      const key = select.dataset.key;
+      if (settings[key]) {
+        select.value = settings[key];
+      }
+    });
+    // Limpar checkboxes ao aplicar preset
+    Object.keys(efeitos).forEach(key => {
+        efeitos[key] = false;
+        document.getElementById(`checkbox-${key}`).checked = false;
+    });
+  }
+
+  function aplicarPreset(presetName) {
+    if (presets[presetName]) {
+      updateUI(presets[presetName]);
+    }
+  }
+
+  function gerarPrompt() {
+    updateSettingsFromUI();
+    let extras = [];
+    Object.entries(efeitos).forEach(([key, value]) => {
+      if (value) {
+        if (key === 'data') extras.push("data impressa na imagem");
+        if (key === 'vazamento') extras.push("vazamento de luz nostálgico");
+        if (key === 'pelos') extras.push("pequenos pelos ou sujeiras típicas de filme");
+        if (key === 'granulado') extras.push("granulação analógica visível");
+        if (key === 'poeira') extras.push("poeira solar dispersa");
+        if (key === 'vinheta') extras.push("vinheta escura nas bordas");
+        if (key === 'gotas') extras.push("gotas de água escorrendo no rosto");
+        if (key === 'neve') extras.push("flocos de neve dispersos");
+        if (key === 'sol') extras.push("raios de sol incidindo pela lateral");
+        if (key === 'vapor') extras.push("vapor suave envolvendo a imagem");
+        if (key === 'brilho') extras.push("pontos de brilho suave no fundo");
+        if (key === 'respingos') extras.push("respingos d'água ou partículas suspensas");
+      }
+    });
+
+    const texto = `Gere o retrato em ${settings.plano} com lente de ${settings.lente}, proporção ${settings.proporcao}, fundo desfocado com profundidade de campo curta (${settings.abertura}), ${settings.iluminacao}, atmosfera poética em ${settings.atmosfera}, ${settings.expressao}, com ${settings.borda}${extras.length > 0 ? ", incluindo elementos como " + extras.join(", ") : ""}.`;
+    promptOutput.value = texto;
+    copyFeedback.classList.add('hidden');
+  }
+
+  async function copiarPrompt() {
+    const promptText = promptOutput.value;
+    if (!promptText.trim()) {
+      alert("Antes de copiar, gere o prompt.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(promptText);
+      copyFeedback.classList.remove('hidden');
+      setTimeout(() => copyFeedback.classList.add('hidden'), 2000);
+    } catch (err) {
+      console.warn("Clipboard API falhou, tentando método alternativo...", err);
+      // Fallback para método antigo
+      const textarea = document.createElement("textarea");
+      textarea.value = promptText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        copyFeedback.classList.remove('hidden');
+        setTimeout(() => copyFeedback.classList.add('hidden'), 2000);
+      } catch (err) {
+        alert("Não foi possível copiar. Copie manualmente.");
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+  }
+
+  // --- Initialization ---
+  function initialize() {
+    // Preencher select de presets
+    Object.keys(presets).forEach(presetName => {
+      const option = document.createElement('option');
+      option.value = presetName;
+      option.textContent = presetName;
+      presetSelect.appendChild(option);
+    });
+
+    // Preencher select de proporções
+    proporcoes.forEach(opt => {
+      const option = document.createElement('option');
+      option.value = opt;
+      option.textContent = opt;
+      proporcaoSelect.appendChild(option);
+    });
+
+    // Criar checkboxes de efeitos
+    Object.keys(efeitos).forEach(key => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center space-x-2';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox-${key}`;
+        checkbox.dataset.key = key;
+        checkbox.className = 'h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500';
+
+        const label = document.createElement('label');
+        label.htmlFor = `checkbox-${key}`;
+        label.textContent = key;
+        label.className = 'text-sm text-gray-600';
+        
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        effectsContainer.appendChild(div);
+        
+        checkbox.addEventListener('change', (e) => {
+            efeitos[e.target.dataset.key] = e.target.checked;
+        });
+    });
+
+    // Aplicar preset inicial
+    const initialPreset = "Foto profissional (LinkedIn)";
+    presetSelect.value = initialPreset;
+    aplicarPreset(initialPreset);
+
+    // Adicionar Event Listeners
+    presetSelect.addEventListener('change', (e) => aplicarPreset(e.target.value));
+    generateButton.addEventListener('click', gerarPrompt);
+    copyButton.addEventListener('click', copiarPrompt);
+    promptOutput.addEventListener('input', () => copyFeedback.classList.add('hidden'));
+  }
+
+  initialize();
+});
+</script>
+
+</body>
 </html>
