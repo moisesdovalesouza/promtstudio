@@ -1,79 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PromptStudio</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 text-gray-900">
-  <div id="root"></div>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PromtStudio</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
 
-  <script type="text/babel">
-    function PromptGenerator() {
-      const { useState } = React;
+    <!-- Seu componente -->
+    <script type="text/babel" src="gerador_prompt_imagem.jsx"></script>
 
-      const presets = {
-        "Foto profissional (LinkedIn)": {
-          plano: "primeiro plano",
-          lente: "85mm",
-          abertura: "f/2.8",
-          iluminacao: "iluminação suave lateral",
-          atmosfera: "tons neutros e limpos, fundo claro desfocado",
-          expressao: "expressão simpática e confiante",
-          proporcao: "3:4 (vertical)",
-          borda: "sem bordas"
-        }
-      };
-
-      const [prompt, setPrompt] = useState("");
-      const [copiado, setCopiado] = useState(false);
-      const [settings, setSettings] = useState(presets["Foto profissional (LinkedIn)"]);
-      const [efeitos, setEfeitos] = useState({
-        granulado: false,
-        vinheta: false
-      });
-
-      const gerarPrompt = () => {
-        let extras = [];
-        if (efeitos.granulado) extras.push("granulação analógica visível");
-        if (efeitos.vinheta) extras.push("vinheta escura nas bordas");
-
-        const texto = `Gere o retrato em ${settings.plano} com lente de ${settings.lente}, proporção ${settings.proporcao}, fundo desfocado com profundidade de campo curta (${settings.abertura}), ${settings.iluminacao}, atmosfera poética em ${settings.atmosfera}, ${settings.expressao}, com ${settings.borda}${extras.length > 0 ? ", incluindo elementos como " + extras.join(", ") : ""}.`;
-        setPrompt(texto);
-        setCopiado(false);
-      };
-
-      const copiarPrompt = async () => {
-        if (!prompt.trim()) {
-          alert("Antes de copiar, gere o prompt.");
-          return;
-        }
-
-        try {
-          await navigator.clipboard.writeText(prompt);
-          setCopiado(true);
-          setTimeout(() => setCopiado(false), 2000);
-        } catch (err) {
-          alert("Erro ao copiar.");
-        }
-      };
-
-      return (
-        <div className="max-w-xl mx-auto mt-10 p-4 bg-white rounded-xl shadow space-y-4">
-          <h1 className="text-2xl font-bold text-center">PromptStudio</h1>
-          <button onClick={gerarPrompt} className="bg-violet-600 text-white px-4 py-2 rounded-xl w-full">Gerar Prompt</button>
-          <textarea rows="4" value={prompt} onChange={(e) => setPrompt(e.target.value)} className="w-full p-2 border rounded"></textarea>
-          <button onClick={copiarPrompt} className="bg-violet-600 text-white px-4 py-2 rounded-xl w-full">Copiar Prompt</button>
-          {copiado && <p className="text-green-600 text-center">Prompt copiado!</p>}
-        </div>
-      );
-    }
-
-    ReactDOM.createRoot(document.getElementById("root")).render(<PromptGenerator />);
-  </script>
-</body>
+    <!-- Renderização -->
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<GeradorPromptImagem />);
+    </script>
+  </body>
 </html>
