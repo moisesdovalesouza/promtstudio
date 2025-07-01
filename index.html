@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PromptStudio - v0.3.2 (Beta)</title>
+  <title>PromptStudio - v0.3.4 (Beta)</title>
   
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%238b5cf6' d='M62.6,3.6c-2.4-2.4-6.3-2.4-8.7,0L10.2,47.3c-2.4,2.4-2.4,6.3,0,8.7c2.4,2.4,6.3,2.4,8.7,0l43.7-43.7C65,9.9,65,6,62.6,3.6z'/%3E%3Cpath fill='%238b5cf6' d='M96.4,37.4c-2.4-2.4-6.3-2.4-8.7,0L44,81.1c-2.4,2.4-2.4,6.3,0,8.7c2.4,2.4,6.3,2.4,8.7,0L96.4,46.1C98.8,43.7,98.8,39.8,96.4,37.4z'/%3E%3Cpath fill='%23a78bfa' d='M82.8,11.5c-1.8,1.8-4.7,1.8-6.5,0L65.5,0.7c-1.8-1.8-1.8-4.7,0-6.5c1.8-1.8,4.7-1.8,6.5,0l10.8,10.8C84.6,6.8,84.6,9.7,82.8,11.5z' transform='translate(10 -5) rotate(15)'/%3E%3Cpath fill='%23a78bfa' d='M25,85.5c-1.8,1.8-4.7,1.8-6.5,0L7.7,74.7c-1.8-1.8-1.8-4.7,0-6.5c1.8-1.8,4.7-1.8,6.5,0l10.8,10.8C26.8,80.8,26.8,83.7,25,85.5z' transform='translate(-5 5) rotate(15)'/%3E%3C/svg%3E">
 
@@ -54,12 +54,12 @@
     <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
         <div>
           <div class="mb-6">
-            <nav class="flex justify-center flex-wrap gap-2" aria-label="Tabs">
-              <button data-tab="tab0" class="tab-button active-tab rounded-full py-2 px-5 font-medium text-sm">🎯 Modelos</button>
-              <button data-tab="tab1" class="tab-button rounded-full py-2 px-5 font-medium text-sm">📷 Técnica</button>
-              <button data-tab="tab2" class="tab-button rounded-full py-2 px-5 font-medium text-sm">🧍 Pose</button>
-              <button data-tab="tab3" class="tab-button rounded-full py-2 px-5 font-medium text-sm">🎨 Estilo</button>
-              <button data-tab="tab4" class="tab-button rounded-full py-2 px-5 font-medium text-sm">⚙️ Avançado</button>
+            <nav class="flex justify-center space-x-2 overflow-x-auto pb-2" aria-label="Tabs">
+              <button data-tab="tab0" class="tab-button active-tab rounded-full py-2 px-5 font-medium text-sm flex-shrink-0">🎯 Modelos</button>
+              <button data-tab="tab1" class="tab-button rounded-full py-2 px-5 font-medium text-sm flex-shrink-0">📷 Técnica</button>
+              <button data-tab="tab2" class="tab-button rounded-full py-2 px-5 font-medium text-sm flex-shrink-0">🧍 Pose</button>
+              <button data-tab="tab3" class="tab-button rounded-full py-2 px-5 font-medium text-sm flex-shrink-0">🎨 Estilo</button>
+              <button data-tab="tab4" class="tab-button rounded-full py-2 px-5 font-medium text-sm flex-shrink-0">⚙️ Avançado</button>
             </nav>
           </div>
 
@@ -237,6 +237,9 @@
             <button id="copy-button" class="w-full sm:w-auto px-6 py-3 bg-gray-600 text-white font-bold rounded-xl hover:bg-gray-700 shadow-lg transform hover:scale-105 transition-transform">
               Copiar Prompt
             </button>
+            <button id="clear-button" class="w-full sm:w-auto px-6 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 shadow-lg transform hover:scale-105 transition-transform">
+              Limpar
+            </button>
           </div>
           <div id="copy-feedback" class="hidden flex items-center text-green-500">
             <svg class="animate-pulse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -385,7 +388,7 @@
     </div>
 
     <p class="text-xs text-center text-gray-500 mt-8">
-      Criado por <span class="font-semibold text-gray-600">@moisesdovalesouza</span> · v0.3.2 (Beta)
+      Criado por <span class="font-semibold text-gray-600">@moisesdovalesouza</span> · v0.3.3 (Beta)
     </p>
   </div>
 
@@ -449,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "Sem bordas": "no borders", "Borda branca suave": "soft white border", "Borda escura": "dark border", "Borda branca espessa inferior (estilo polaroid)": "thick white bottom border (polaroid style)", "Borda de filme 35mm": "35mm film border", "Vinheta circular suave": "soft circular vignette"
   };
 
-  const PROMPT_SUFFIX = ", 4k, hd, high-resolution photo, photorealistic, sharp focus, extremely detailed face and skin, no distortion, perfectly preserved original facial structure, maintain exact facial features: precise teeth shape and size, authentic nose structure, maintain face proportions and jawline, bone structure, exact distance between eyes, lip thickness, eyebrow shape, eye size, color and original gaze direction, same facial expressions and symmetry, people clearly visible, no blending or fusion";
+  const PROMPT_SUFFIX = ", 4k, hd, high-resolution photo, photorealistic, sharp focus, extremely detailed face and skin, no distortion, perfectly preserved original facial structure, maintain exact facial features: precise teeth shape and size, authentic nose structure, maintain face proportions and jawline, bone structure, exact distance between eyes, lip thickness, eyebrow shape, eye size, color and original gaze direction, same facial expressions and symmetry, maintain original body type, physique, and proportions, do not alter weight or body shape, people clearly visible, no blending or fusion";
   
   const presets = {
     "Upscaling Fiel": { plano: NEUTRO, lente: NEUTRO, abertura: NEUTRO, proporcao: NEUTRO, expressao: NEUTRO, iluminacao: NEUTRO, atmosfera: "Qualidade ultra-realista e nítida (Upscaling)", borda: NEUTRO },
@@ -634,6 +637,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => getEl('copy-feedback').classList.add('hidden'), 2000);
   }
 
+  function resetAll() {
+    getEl('preset-select').value = "";
+    getEls('select[data-key]').forEach(el => el.value = "");
+    getEls('.optional-control-wrapper input[type="checkbox"]').forEach(check => {
+        check.checked = false;
+        check.dispatchEvent(new Event('change'));
+    });
+    getEls('#effects-container input, #negative-prompts-container input').forEach(el => el.checked = false);
+    getEl('prompt-output').value = "";
+    getEl('copy-feedback').classList.add('hidden');
+  }
+
   function initialize() {
     populateSelect('preset-select', Object.keys(presets));
     populateSelect('select-plano', data.planos);
@@ -682,6 +697,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     getEl('generate-button').addEventListener('click', gerarPrompt);
     getEl('copy-button').addEventListener('click', copiarPrompt);
+    getEl('clear-button').addEventListener('click', resetAll);
     getEl('prompt-output').addEventListener('input', () => getEl('copy-feedback').classList.add('hidden'));
 
     getEls('.tab-button').forEach(tab => {
