@@ -6,19 +6,16 @@
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#2a1018" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f9f1e3" media="(prefers-color-scheme: light)" />
-  <meta name="description" content="PromptStudio 5.0.0 — interface premium, grid refinado e prompts fotográficos precisos para diferentes IAs." />
+  <meta name="description" content="PromptStudio 5.0.1 — interface premium, grid refinado e prompts fotográficos precisos para diferentes IAs." />
   <meta name="application-name" content="PromptStudio" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="PromptStudio" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="image/svg+xml" href="icons/icon-v5.svg" />
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png" />
-  <link rel="shortcut icon" href="icons/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
-  <title>PromptStudio 5.0.0 | Gerador de Prompts Fotográficos</title>
+  <link rel="icon" type="image/svg+xml" href="icons/icon-v5.svg?v=5.0.1" />
+  <link rel="shortcut icon" href="icons/icon-v5.svg?v=5.0.1" />
+  <link rel="apple-touch-icon" href="icons/icon-v5.svg?v=5.0.1" />
+  <title>PromptStudio 5.0.1 | Gerador de Prompts Fotográficos</title>
   <style>
     :root {
       --bg: #f8f1e6;
@@ -1482,7 +1479,7 @@ label[for="lighting"]::before{content:"☀"}label[for="palette"]::before{content
     <header class="topbar glass" data-glass>
       <div class="brand">
         <div class="logo" aria-label="PromptStudio — varinha mágica">
-          <img src="icons/logo-v5-dark.svg" alt="Logo do PromptStudio" class="logo-img" id="brandLogo" />
+          <img src="icons/logo-v5-dark.svg?v=5.0.1" alt="Logo do PromptStudio" class="logo-img" id="brandLogo" />
         </div>
         <div class="brand-copy">
           <strong class="brand-title"><span>Prompt</span><span class="brand-studio">Studio</span></strong>
@@ -2372,7 +2369,7 @@ label[for="lighting"]::before{content:"☀"}label[for="palette"]::before{content
 
   function compileJSON(s){
     const obj={
-      version:'PromptStudio 5.0.0',
+      version:'PromptStudio 5.0.1',
       operation:s.activity,
       preset:s.preset||null,
       destination:s.destination,
