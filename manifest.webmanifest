@@ -2,7 +2,7 @@
   "id": "./",
   "name": "PromptStudio",
   "short_name": "PromptStudio",
-  "description": "Seu prompt, suas regras. Gerador premium de prompts fotográficos com interface Liquid Glass, temas pôr do sol e amanhecer.",
+  "description": "Seu prompt, suas regras. PromptStudio 5 com interface Liquid Glass, paleta pôr do sol/amanhecer e gerador fotográfico avançado.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",
@@ -13,14 +13,20 @@
     "minimal-ui"
   ],
   "orientation": "any",
-  "background_color": "#160b18",
-  "theme_color": "#7c5cff",
+  "background_color": "#160b1a",
+  "theme_color": "#ff8c39",
   "categories": [
     "photography",
     "productivity",
     "utilities"
   ],
   "icons": [
+    {
+      "src": "icons/icon-v5.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
