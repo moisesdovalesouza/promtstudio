@@ -1,15 +1,12 @@
-const CACHE = 'promptstudio-v4.2.0';
+const CACHE = 'promptstudio-v5.0.1';
 const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/promptstudio-logo.svg',
   './icons/icon-v5.svg',
   './icons/logo-v5-dark.svg',
-  './icons/logo-v5-light.svg',
-  './icons/logo-header-dark.png',
-  './icons/logo-header-light.png',
-  ];
+  './icons/logo-v5-light.svg'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
