@@ -7,16 +7,9 @@ const CORE = [
   './icons/icon-v5.svg',
   './icons/logo-v5-dark.svg',
   './icons/logo-v5-light.svg',
-  './icons/icon-192.png',
-  './icons/apple-touch-icon.png',
   './icons/logo-header-dark.png',
   './icons/logo-header-light.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable-512.png',
-  './icons/favicon-32.png',
-  './icons/favicon-48.png',
-  './icons/favicon-16.png'
-];
+  ];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
