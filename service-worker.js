@@ -1,10 +1,10 @@
-const CACHE = 'promptstudio-v5.0.1';
+const CACHE = 'promptstudio-v5.0.2';
 const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icons/icon-v5.svg',
-  './icons/logo-v5-dark.svg',
+  './icons/icon-v5.svg',
   './icons/logo-v5-light.svg'
 ];
 
