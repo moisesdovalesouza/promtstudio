@@ -2,7 +2,7 @@
   "id": "./",
   "name": "PromptStudio",
   "short_name": "PromptStudio",
-  "description": "Seu prompt, suas regras. PromptStudio 5.0.1 com identidade sunset Liquid Glass e gerador fotográfico avançado.",
+  "description": "Seu prompt, suas regras. PromptStudio 5.0.2 com identidade Liquid Glass sunset/dawn e gerador fotográfico avançado.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",
@@ -22,7 +22,7 @@
   ],
   "icons": [
     {
-      "src": "icons/icon-v5.svg?v=5.0.1",
+      "src": "icons/icon-v5.svg?v=5.0.2",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
