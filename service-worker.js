@@ -1,11 +1,9 @@
-const CACHE = 'promptstudio-v5.0.2';
+const CACHE = 'promptstudio-v5.0.3';
 const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/icon-v5.svg',
-  './icons/icon-v5.svg',
-  './icons/logo-v5-light.svg'
+  './icons/promptstudio-mark.svg'
 ];
 
 self.addEventListener('install', event => {
