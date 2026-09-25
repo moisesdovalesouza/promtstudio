@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Varinha mágica PromptStudio">
+<defs>
+  <linearGradient id="wand" x1="105" y1="420" x2="352" y2="165" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#25135f"/>
+    <stop offset=".18" stop-color="#4420c6"/>
+    <stop offset=".43" stop-color="#8e27e9"/>
+    <stop offset=".68" stop-color="#ed2f98"/>
+    <stop offset=".86" stop-color="#ff7138"/>
+    <stop offset="1" stop-color="#ffc64d"/>
+  </linearGradient>
+  <linearGradient id="edge" x1="110" y1="420" x2="375" y2="120" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#6ec6ff"/>
+    <stop offset=".25" stop-color="#8a6cff"/>
+    <stop offset=".52" stop-color="#ff67c3"/>
+    <stop offset=".76" stop-color="#ff9a42"/>
+    <stop offset="1" stop-color="#fff08c"/>
+  </linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#fff5ad"/>
+    <stop offset=".3" stop-color="#ffd55f"/>
+    <stop offset=".62" stop-color="#ff9b32"/>
+    <stop offset="1" stop-color="#d85c22"/>
+  </linearGradient>
+  <radialGradient id="starFill">
+    <stop offset="0" stop-color="#fffef0"/>
+    <stop offset=".24" stop-color="#fff4a2"/>
+    <stop offset=".52" stop-color="#ffc94d"/>
+    <stop offset=".78" stop-color="#ff6f45"/>
+    <stop offset="1" stop-color="#b92bd8"/>
+  </radialGradient>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="10" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4"/>
+  </filter>
+</defs>
+<!-- transparent background by design -->
+<g opacity=".58" filter="url(#soft)">
+  <circle cx="358" cy="149" r="102" fill="#ff6d62" opacity=".20"/>
+  <circle cx="350" cy="144" r="86" fill="#b63cff" opacity=".15"/>
+</g>
+<!-- wand body -->
+<path d="M103 401L137 435L335 237L301 203Z" fill="#1b0d55" stroke="#2b145c" stroke-width="9" stroke-linejoin="round"/>
+<path d="M110 395L140 425L329 236L299 206Z" fill="url(#wand)" stroke="url(#edge)" stroke-width="6" stroke-linejoin="round"/>
+<path d="M125 394L143 412L313 242L298 227Z" fill="#fff" opacity=".17"/>
+<path d="M151 391C199 334 246 291 309 226" fill="none" stroke="#fff7c9" stroke-width="5" stroke-linecap="round" opacity=".42"/>
+<path d="M126 420L111 405L134 382L149 397Z" fill="url(#gold)" stroke="#fff0a3" stroke-width="3"/>
+<path d="M294 223L312 241L334 219L316 201Z" fill="url(#gold)" stroke="#fff0a3" stroke-width="3"/>
+<!-- large star head -->
+<polygon points="357.0,64.0 379.9,118.4 438.8,123.4 394.1,162.1 407.5,219.6 357.0,189.0 306.5,219.6 319.9,162.1 275.2,123.4 334.1,118.4"
+ fill="url(#starFill)" stroke="#ffb244" stroke-width="9" stroke-linejoin="round" filter="url(#glow)"/>
+<polygon points="357.0,91.0 371.7,129.8 413.1,131.8 380.8,157.7 391.7,197.7 357.0,175.0 322.3,197.7 333.2,157.7 300.9,131.8 342.3,129.8"
+ fill="#fff7be" opacity=".46"/>
+<path d="M357 82L364 137L418 143L365 153L357 207L350 154L296 145L350 137Z" fill="#fff" opacity=".78"/>
+<!-- sparkles -->
+<g fill="#fff6b0" stroke="#ff9c3b" stroke-width="4" filter="url(#glow)">
+  <path d="M213 91L223 118L250 128L223 138L213 165L203 138L176 128L203 118Z"/>
+  <path d="M445 238L453 259L474 267L453 275L445 296L437 275L416 267L437 259Z"/>
+  <path d="M232 228L238 244L254 250L238 256L232 272L226 256L210 250L226 244Z"/>
+</g>
+<g fill="#ffd867">
+  <circle cx="435" cy="92" r="7"/>
+  <circle cx="267" cy="79" r="6"/>
+  <circle cx="467" cy="184" r="5"/>
+  <circle cx="192" cy="197" r="5"/>
+</g>
+</svg>
