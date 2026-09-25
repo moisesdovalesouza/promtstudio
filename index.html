@@ -11,10 +11,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="PromptStudio" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="image/svg+xml" href="icons/icon-v5.svg?v=5.0.1" />
-  <link rel="shortcut icon" href="icons/icon-v5.svg?v=5.0.1" />
-  <link rel="apple-touch-icon" href="icons/icon-v5.svg?v=5.0.1" />
+  <link rel="manifest" href="manifest.webmanifest?v=5.0.2" />
+  <link rel="icon" type="image/svg+xml" href="icons/icon-v5.svg?v=5.0.2" />
+  <link rel="shortcut icon" type="image/svg+xml" href="icons/icon-v5.svg?v=5.0.2" />
+  <link rel="apple-touch-icon" href="icons/icon-v5.svg?v=5.0.2" />
   <title>PromptStudio 5.0.1 | Gerador de Prompts Fotográficos</title>
   <style>
     :root {
@@ -1472,6 +1472,102 @@ label[for="lighting"]::before{content:"☀"}label[for="palette"]::before{content
 }
 @media(max-width:520px){.checks{grid-template-columns:1fr}.brand-copy small{display:none}.tabs{grid-template-columns:repeat(7,58px)}}
 
+
+/* =========================================================
+   PromptStudio v5.0.2 — legibilidade, marca e tipografia
+   ========================================================= */
+body{
+  font-weight:400;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.logo{
+  width:54px!important;
+  height:54px!important;
+  flex:0 0 54px!important;
+  overflow:hidden!important;
+  border-radius:15px!important;
+  background:transparent!important;
+  box-shadow:0 9px 26px rgba(85,34,115,.24), inset 0 1px 0 rgba(255,255,255,.16)!important;
+}
+.logo-img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:15px!important;
+  filter:none!important;
+  transform:none!important;
+}
+.brand:hover .logo{
+  transform:translateY(-1px) scale(1.025)!important;
+  filter:saturate(1.04) brightness(1.02)!important;
+}
+.brand-title{
+  font-weight:760!important;
+  letter-spacing:-.032em!important;
+}
+.brand-copy small{
+  font-weight:560!important;
+  letter-spacing:.16em!important;
+}
+h1{font-weight:760!important}
+.section-title h2{font-weight:700!important}
+.modebar .label strong,
+.preview-head strong,
+.subhead strong,
+.info-card h3,
+.objective-summary strong{
+  font-weight:680!important;
+}
+label{
+  font-weight:650!important;
+}
+.tab{
+  font-weight:620!important;
+}
+.chip{
+  font-weight:620!important;
+}
+.preset-card strong,
+.activity-card strong,
+.history-item strong{
+  font-weight:660!important;
+}
+.check{
+  font-weight:520!important;
+}
+.status,
+.range-labels,
+.usage-badge,
+.mini-state{
+  font-weight:610!important;
+}
+.btn,.mini-btn,.prompt-toggle{
+  font-weight:650!important;
+  letter-spacing:-.01em!important;
+}
+.btn-icon{
+  font-weight:500!important;
+}
+input,select,textarea{
+  font-weight:420!important;
+}
+.promptbox{
+  font-weight:400!important;
+}
+@media(max-width:760px){
+  .logo{
+    width:48px!important;
+    height:48px!important;
+    flex-basis:48px!important;
+    border-radius:14px!important;
+  }
+  .logo-img{border-radius:14px!important}
+  .brand-title{font-size:17px!important;font-weight:740!important}
+  .btn,.mini-btn{font-weight:630!important}
+}
+
 </style>
 </head>
 <body data-mode="basic" data-activity="edit" data-person-mode="basic">
@@ -1479,7 +1575,7 @@ label[for="lighting"]::before{content:"☀"}label[for="palette"]::before{content
     <header class="topbar glass" data-glass>
       <div class="brand">
         <div class="logo" aria-label="PromptStudio — varinha mágica">
-          <img src="icons/logo-v5-dark.svg?v=5.0.1" alt="Logo do PromptStudio" class="logo-img" id="brandLogo" />
+          <img src="icons/icon-v5.svg?v=5.0.2" alt="Logo do PromptStudio" class="logo-img" id="brandLogo" />
         </div>
         <div class="brand-copy">
           <strong class="brand-title"><span>Prompt</span><span class="brand-studio">Studio</span></strong>
@@ -2553,7 +2649,7 @@ label[for="lighting"]::before{content:"☀"}label[for="palette"]::before{content
   function updateBrandLogo(){
     const img = $('#brandLogo');
     if(!img) return;
-    img.src = resolvedTheme() === 'light' ? 'icons/logo-v5-light.svg' : 'icons/logo-v5-dark.svg';
+    img.src = resolvedTheme() === 'light' ? 'icons/icon-v5.svg?v=5.0.2' : 'icons/icon-v5.svg?v=5.0.2';
   }
 
   function setTheme(theme){
